@@ -1,0 +1,312 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookmark</title>
+    <link href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/static/woff2/SUIT.css" rel="stylesheet">
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/786/786352.png" type="image/x-icon">
+    <meta name="theme-color" content="#ffffff">
+    <style>
+    body {
+        font-family: 'SUIT', sans-serif;
+        margin: 0 24px;
+        padding: 0;
+        background: #f9f9f9;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+    a:hover,
+    a:active,
+    a:focus {
+        text-decoration: none !important;
+        color: rgba(0, 0, 0, .5);
+        cursor: pointer;
+        -webkit-transition: color 0.5s ease;
+        transition: color 0.5s ease;
+    }
+
+    p {
+        font-size: 13px;
+        margin: 5px 0 0;
+        font-weight: 500;
+        text-align: center;
+    }
+
+    small {
+        font-size: 10px;
+        color: rgba(0, 0, 0, .7);
+    }
+
+    section {
+        margin: 0 auto;
+        max-width: 1280px;
+        min-width: 320px;
+    }
+
+    .bookmark {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        grid-column-gap: 6px;
+        grid-row-gap: 24px;
+        cursor: pointer;
+    }
+
+    .bookmark>div {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .bookmark>div>span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 48px;
+        height: 48px;
+        background: #ffffff;
+        border-radius: 24px;
+        border: 1px solid #dedede;
+    }
+
+    .bookmark>div:hover span {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, .2);
+        transition: box-shadow 0.3s ease;
+    }
+
+    .bookmark>div>span>img {
+        width: 24px;
+        height: 24px;
+    }
+
+    .bookmark .title {
+        display: flex;
+        grid-column: 1 / -1;
+        font-weight: bold;
+        font-size: 17px;
+        align-items: flex-start;
+        padding: 32px 12px 12px;
+        border-bottom: 1px solid #efefef;
+    }
+
+    .link {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        border-top: 1px solid #efefef;
+        margin-top: 32px;
+        padding-top: 32px;
+    }
+
+    .link>div {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 16px;
+        height: 32px;
+        border: 1px solid #dedede;
+        border-radius: 16px;
+        background: #fff;
+        font-size: 13px;
+        font-weight: 500;
+        cursor: pointer;
+    }
+
+    .link>div:hover {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, .2);
+        background: rgba(0, 0, 0, .7);
+        transition: box-shadow 0.3s ease, background 0.3s ease;
+    }
+
+    [data-tooltip]::before {
+        position: absolute;
+        content: attr(data-tooltip);
+        opacity: 0;
+        color: #FFF;
+    }
+
+    [data-tooltip]:hover::before {
+        opacity: 1;
+        transition: opacity 0.3s ease;
+    }
+
+    [data-tooltip]:not([data-tooltip-persistent])::before {
+        pointer-events: none;
+    }
+    </style>
+</head>
+
+<body>
+    <section class="bookmark">
+        <div class="title">
+            Favorite
+        </div>
+        <div data-url="https://www.google.com/" onclick="navigateToUrl(this)">
+            <span><img src="https://upload.wikimedia.org/wikipedia/commons/2/2d/Google-favicon-2015.png"></span>
+            <p>Google</p>
+        </div>
+        <div data-url="https://www.youtube.com/" onclick="navigateToUrl(this)">
+            <span><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png"></span>
+            <p>Youtube</p>
+        </div>
+        <div data-url="https://analytics.google.com/analytics/web/?utm_source=OGB&utm_medium=app&authuser=0#/p376542918/reports/intelligenthome" onclick="navigateToUrl(this)">
+            <span><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQBxgGkG-plps8m75vkLW4z5_XWdI2Wwu9rw&s"></span>
+            <p>Google Analytics</p>
+        </div>
+        <div data-url="https://nomadcoders.co/" onclick="navigateToUrl(this)">
+            <span><img src="https://nomadcoders.co/m.svg"></span>
+            <p>Nomadcoders</p>
+        </div>
+        <div data-url="https://www.udemy.com/" onclick="navigateToUrl(this)">
+            <span><img src="https://asset.brandfetch.io/idTqV2BNgX/iddwu7h7Fu.png"></span>
+            <p>Udemy</p>
+        </div>
+        <div data-url="https://ocw.mit.edu/" onclick="navigateToUrl(this)">
+            <span><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuglb9FwkUr2E3YukITHX_SN3OuuWYLhlqyw&s"></span>
+            <p>MIT OCW</p>
+        </div>
+        <div data-url="https://www.ted.com/talks" onclick="navigateToUrl(this)">
+            <span><img src="https://cdn.iconscout.com/icon/free/png-256/free-ted-5-282539.png"></span>
+            <p>TED Talks</p>
+        </div>
+    </section>
+    <section class="bookmark">
+        <div class="title">
+            AI
+        </div>
+        <div data-url="https://chat.openai.com/" onclick="navigateToUrl(this)">
+            <span><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQucN6fdOXRNQyjGmuVXlb13iXYoeJKqRkRUg&s"></span>
+            <p>ChatGPT</p>
+            <small>LLM</small>
+        </div>
+        <div data-url="https://claude.ai/login?returnTo=%2F%3F" onclick="navigateToUrl(this)">
+            <span><img src="https://images.sftcdn.net/images/t_app-icon-m/p/b04fdb43-b154-4f9d-ab55-1d9780533ac2/2422419633/claude-logo"></span>
+            <p>Claude</p>
+            <small>LLM</small>
+        </div>
+        <div data-url="https://copilot.microsoft.com/" onclick="navigateToUrl(this)">
+            <span><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjmJajFJdxJlZcy2iVli5r3CcFD6C2T1qQoA&s"></span>
+            <p>Copilot</p>
+            <small>LLM</small>
+        </div>
+        <div data-url="https://chat.lmsys.org/" onclick="navigateToUrl(this)">
+            <span><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAw1BMVEX////+9ez7tWv7u3H++PL7vYn5iAD5lAD5mQD7z5P8zrH5hQD5owD5qwD94rn94tP5iS35fQD8y5v8ypT5pQD6vTj+8dr6mmH5bAD6rWf6u135sAD5tQD60Wv7tY75cgD5dgD5kDT+8eT969H5tir5ugD5vwD84pb//fz5fBL5jgD7uXz84K/5xQD5xwD5zwv4YwD8waD5ngD8yaT82pb++uv5ni786q/7qYP5tAD7x4f734v723v856L83aD82KX7yonabGiaAAABMUlEQVR4AcWS1YICIRRAsQam1kWd7oBF7O74/69a7H72vp6bB8C3o1AslT+xigQRkt8iRZUgRJqm/7yg6i+WJKlWRw1dN8wHVLZsrGKnLMa6Dc/3g7vRoR3FcVIFIC0AkOUeofTvjFgkUFMR9SXIWwyANqGdbu8E034cRwMA5OEQIa6OABgL2J2c6EB0tad5ozFEkHM8zYmAs8tMNlcXvqc3loxVuFiIdFbstuyakoXX4BXAlg3dIx6eX+Gm06G+McWcQzRsNPKpHUe2cmJmt9shWwBGKkfDobYTp4n1+4XTxF63Q4mQVi5yuGRCZDOO7fjSd0Up8QzzJKH6G4uu4U3RJPDFQu5Bn4Mxtq3Hl8tyXddQrS7sYyHyOdoNTUMQSqoC3sUeIShVPn+TYhl8Of4BaxUezgKyWLEAAAAASUVORK5CYII="></span>
+            <p>LMSYS</p>
+            <small>LLM</small>
+        </div>
+        <div data-url="https://www.perplexity.ai/" onclick="navigateToUrl(this)">
+            <span><img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/perplexity-ai-icon.png"></span>
+            <p>Perplexity</p>
+        </div>
+        <div data-url="https://app.runwayml.com/video-tools/teams/appusecokr/ai-tools/text-to-image" onclick="navigateToUrl(this)">
+            <span><img src="https://upload.wikimedia.org/wikipedia/commons/e/e6/Midjourney_Emblem.png"></span>
+            <p>Midjourney</p>
+            <small>생성형 이미지와 비디오</small>
+        </div>
+    </section>
+    <section class="bookmark">
+        <div class="title">
+            Stock Contributor
+        </div>
+        <div data-url="https://contributor.stock.adobe.com/" onclick="navigateToUrl(this)">
+            <span><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwvlgleC97VBtyr_TLK2MUO7CnWylRJzkEpw&s"></span>
+            <p>Adobe Stock</p>
+        </div>
+        <div data-url="https://submit.shutterstock.com/" onclick="navigateToUrl(this)">
+            <span><img src="https://submit.shutterstock.com/assets/images/Contributor_Favicon_32.png"></span>
+            <p>Shutterstock</p>
+        </div>
+        <div data-url="https://esp.gettyimages.com/" onclick="navigateToUrl(this)">
+            <span><img src="https://cdn.iconscout.com/icon/free/png-256/free-gettyimages-461794.png"></span>
+            <p>Gettyimages</p>
+        </div>
+        <div data-url="https://creativemarket.com/" onclick="navigateToUrl(this)">
+            <span><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSU0LHU1J8JWlTCXWB52S5MDuXm-7ajUoMxeQ&s"></span>
+            <p>Creative Market</p>
+        </div>
+        <div data-url="https://www.iconfinder.com/" onclick="navigateToUrl(this)">
+            <span><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZdJMD4bMIbDUxk5Vo0ua4L_lz6iCMCxESqQ&s"></span>
+            <p>Iconfinder</p>
+        </div>
+    </section>
+    <section class="bookmark">
+        <div class="title">
+            Torrent
+        </div>
+        <div data-url="https://torrentqq322.com/" onclick="navigateToUrl(this)">
+            <span><img src=""></span>
+            <p>torrentqq</p>
+        </div>
+        <div data-url="https://torrentsee237.com/" onclick="navigateToUrl(this)">
+            <span><img src=""></span>
+            <p>torrentsee</p>
+        </div>
+        <div data-url="https://bt4g.org/" onclick="navigateToUrl(this)">
+            <span><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAAAAAA6mKC9AAAAr0lEQVR4AU3OIQyDMBQE0D8vEHNIHHYO3WQGV6+m5hVekEzUizokDleBrqisboKqReB/bw0ZsJMvucsRrEpIjCMEXXYW6YJQ1X072VPoJZW2o17xI2pbOS7T38b7pha47QJTKRvM2QBtQvTRxwvwKXoTDfiEtX6K0cVDiGHKVm7zCmZOnAiMoa6EmyIyAYQsurg1fhh8HgsZkBC0LB9Nca9FR9gFiN7NLgI7gPm4wV+0DtHUd8v4dgAAAABJRU5ErkJggg=="></span>
+            <p>bt4g</p>
+        </div>
+        <div data-url="https://en.btdig.com/index.htm" onclick="navigateToUrl(this)">
+            <span><img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/BTDigg_logo.png"></span>
+            <p>btdig</p>
+        </div>
+    </section>
+    <!-- Link -->
+    <section class="link">
+        <div data-tooltip="전기요금">https://pp.kepco.co.kr/rs/rs0202.do?menu_id=O020202</div>
+        <div data-tooltip="GSAP 기초 한글강좌">https://webstoryboy.co.kr/1910</div>
+        <div data-tooltip="무료 비디오">https://www.pexels.com/ko-kr/videos/</div>
+        <div data-tooltip="무료 사진">https://unsplash.com/ko</div>
+    </section>
+    <script>
+    function navigateToUrl(divElement) {
+        const url = divElement.getAttribute("data-url");
+        window.open(url, "_self");
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const bookmarks = document.querySelectorAll('.bookmark div[data-url]');
+
+        bookmarks.forEach(bookmark => {
+            const imgElement = bookmark.querySelector('img');
+            const imgSrc = imgElement.getAttribute('src');
+
+            if (imgSrc.trim() === '') {
+                // img 태그의 src가 비어있으면 data-url로 파비콘을 가져온다.
+                const dataUrl = bookmark.getAttribute('data-url');
+                imgElement.src = dataUrl + '/favicon.ico';
+            }
+        });
+    });
+    </script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // link 클래스를 가진 섹션을 모두 찾습니다
+        const linkSections = document.querySelectorAll("section.link");
+
+        linkSections.forEach(section => {
+            // 각 섹션 내의 모든 div 요소를 찾습니다
+            const divs = section.querySelectorAll("div");
+
+            divs.forEach(div => {
+                const urlText = div.textContent.trim();
+                // URL 형식인지 확인합니다
+                if (urlText.match(/^https?:\/\/[^\s]+$/)) {
+                    // div를 클릭 가능하게 만듭니다
+                    div.classList.add("clickable");
+                    div.onclick = function() {
+                        window.open(urlText, "_self");
+                    };
+                }
+            });
+        });
+    });
+    </script>
+</body>
+
+</html>
