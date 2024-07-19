@@ -139,41 +139,50 @@
     [data-tooltip]:not([data-tooltip-persistent])::before {
         pointer-events: none;
     }
-    .search-container {
-        text-align: center;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 32px;
-        gap: 4px;
-    }
-    input[type="text"] {
-        display: flex;
+    .search-box {
+        position: relative;
         width: 300px;
-        height: 32px;
-        justify-content: center;
-        align-items: flex-start;
-        padding: 0 10px;
-        font-size: 16px;
-        border: 1px solid #dedede;
     }
-    input[type="submit"] {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 32px;
-        height: 32px;
+    .search-box input[type="text"] {
+        width: 100%;
+        padding: 10px 10px 10px 40px; /* 왼쪽 여백을 늘려 아이콘 공간 확보 */
         font-size: 16px;
-        border: 1px solid #dedede;
+        box-sizing: border-box;
     }
-    </style>
+    .search-box img {
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        transform: translateY(-50%);
+        width: 20px;
+        height: 20px;
+    }
+    .search-box button {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+    }
+    .search-box button img {
+        width: 20px;
+        height: 20px;
+    }
 </head>
 
 <body>
     <section class="search-container">
         <form action="https://www.google.com/search" method="get" target="_blank">
-            <input type="text" name="q" placeholder="Search Google">
-            <input type="submit" value="Search">
+            <div class="search-box">
+                <img src="https://www.iconfinder.com/data/icons/google-favicon/50/Google_favicon-2-512.png" alt="Search Icon">
+                <input type="text" name="q" placeholder="Search Google">
+                <button type="submit">
+                    <img src="https://www.iconfinder.com/data/icons/google-favicon/50/Google_favicon-2-512.png" alt="Search">
+                </button>
+            </div>
         </form>
     </section>
     <section class="bookmark">
