@@ -188,7 +188,7 @@
     <section class="search-container">
         <form action="https://www.google.com/search" method="get" target="_blank">
             <div class="search-box">
-                <input type="text" name="q" placeholder="Search Google">
+                <input type="text" id="search" name="search" placeholder="Search Google">
                 <button type="submit">
                     <img src="https://cdn3.iconfinder.com/data/icons/feather-5/24/search-512.png" alt="Search">
                 </button>
@@ -454,6 +454,12 @@
             });
         });
     });
+    </script>
+    <script>
+        // 페이지 로드 후 'name' 입력 필드에 커서 자동 이동
+        window.onload = function() {
+            document.getElementById("search").focus();
+        };
     </script>
 </body>
 
