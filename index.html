@@ -417,34 +417,25 @@
         <div data-tooltip="자막">https://korjpntranslate.blogspot.com/</div>
     </section>
     <script>
-    function getFaviconUrl(url) {
-        // HTML을 fetch로 가져와서 파비콘 링크를 찾는다.
-        fetch(url)
-            .then(response => response.text())
-            .then(html => {
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(html, 'text/html');
-                
-                // head에서 rel="icon" 혹은 rel="shortcut icon" 태그를 찾는다.
-                const iconLink = doc.querySelector('link[rel="icon"], link[rel="shortcut icon"]');
-                if (iconLink) {
-                    return iconLink.getAttribute('href');
-                }
-                return url + '/favicon.ico'; // rel="icon"을 못 찾으면 기본 favicon.ico 사용
-            })
-            .then(faviconUrl => {
-                imgElement.src = faviconUrl; // 파비콘 URL로 이미지 설정
-            })
-            .catch(error => {
-                console.error('Error fetching favicon:', error);
-            });
+    function navigateToUrl(divElement) {
+        const url = divElement.getAttribute("data-url");
+        window.open(url, "_self");
     }
 
-    // 사용 예시: 만약 src가 비어있다면 해당 URL의 파비콘을 가져온다.
-    if (imgSrc.trim() === '') {
-        const dataUrl = bookmark.getAttribute('data-url');
-        getFaviconUrl(dataUrl);
-    }
+    document.addEventListener('DOMContentLoaded', function() {
+        const bookmarks = document.querySelectorAll('.bookmark div[data-url]');
+
+        bookmarks.forEach(bookmark => {
+            const imgElement = bookmark.querySelector('img');
+            const imgSrc = imgElement.getAttribute('src');
+
+            if (imgSrc.trim() === '') {
+                // img 태그의 src가 비어있으면 data-url로 파비콘을 가져온다.
+                const dataUrl = bookmark.getAttribute('data-url');
+                imgElement.src = dataUrl + '/favicon.ico';
+            }
+        });
+    });
     </script>
     <script>
     document.addEventListener("DOMContentLoaded", function() {
