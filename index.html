@@ -430,42 +430,35 @@
         <div data-url="https://korjpntranslate.blogspot.com/">자막</div>
     </section>
     <script>
-    function navigateToUrl(divElement) {
-        const url = divElement.getAttribute("data-url");
-        window.open(url, "_self");
+    function fetchIcon(url, imgElement) {
+        const supportedFormats = ['icon', 'png', 'svg']; // 지원하는 이미지 형식 목록
+        const iconUrls = supportedFormats.map(format => `${url}/${format}`);
+    
+        const img = new Image();
+        img.onload = () => {
+            imgElement.src = img.src;
+        };
+        img.onerror = () => {
+            console.error(`Failed to load icon for ${url}`);
+            // 오류 처리: 기본 이미지 설정, 사용자 알림 등
+            imgElement.src = 'default_icon.png';
+        };
+    
+        // 순차적으로 이미지 로드 시도
+        iconUrls.forEach(iconUrl => {
+            img.src = iconUrl;
+            if (img.complete) return;
+        });
     }
     
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', () => {
         const bookmarks = document.querySelectorAll('.bookmark div[data-url]');
     
         bookmarks.forEach(bookmark => {
             const imgElement = bookmark.querySelector('img');
             const dataUrl = bookmark.getAttribute('data-url');
     
-            // 이미지 가져오기 함수
-            function fetchImage(url) {
-                const img = new Image();
-                img.onload = () => {
-                    imgElement.src = img.src;
-                };
-                img.onerror = () => {
-                    // 이미지 로드 실패 시 처리 (예: 기본 이미지 설정)
-                    imgElement.src = 'default_image.png';
-                };
-                img.src = url + '/favicon.ico'; // 먼저 favicon.ico 시도
-                if (!img.complete) { // favicon.ico가 없으면 다른 형식 시도
-                    const otherFormats = ['/apple-touch-icon.png', '/android-chrome-192x192.png'];
-                    otherFormats.forEach(format => {
-                        img.src = url + format;
-                        if (img.complete) return;
-                    });
-                }
-            }
-    
-            // img 태그의 src 속성이 비어있으면 이미지 자동 가져오기
-            if (!imgElement.hasAttribute('src')) {
-                fetchImage(dataUrl);
-            }
+            fetchIcon(dataUrl, imgElement);
         });
     });
     </script>
