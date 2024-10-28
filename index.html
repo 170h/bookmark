@@ -434,18 +434,37 @@
         const url = divElement.getAttribute("data-url");
         window.open(url, "_self");
     }
-
+    
     document.addEventListener('DOMContentLoaded', function() {
         const bookmarks = document.querySelectorAll('.bookmark div[data-url]');
-
+    
         bookmarks.forEach(bookmark => {
             const imgElement = bookmark.querySelector('img');
-            const imgSrc = imgElement.getAttribute('src');
-
-            if (imgSrc.trim() === '') {
-                // img 태그의 src가 비어있으면 data-url로 파비콘을 가져온다.
-                const dataUrl = bookmark.getAttribute('data-url');
-                imgElement.src = dataUrl + '/favicon.ico';
+            const dataUrl = bookmark.getAttribute('data-url');
+    
+            // 이미지 가져오기 함수
+            function fetchImage(url) {
+                const img = new Image();
+                img.onload = () => {
+                    imgElement.src = img.src;
+                };
+                img.onerror = () => {
+                    // 이미지 로드 실패 시 처리 (예: 기본 이미지 설정)
+                    imgElement.src = 'default_image.png';
+                };
+                img.src = url + '/favicon.ico'; // 먼저 favicon.ico 시도
+                if (!img.complete) { // favicon.ico가 없으면 다른 형식 시도
+                    const otherFormats = ['/apple-touch-icon.png', '/android-chrome-192x192.png'];
+                    otherFormats.forEach(format => {
+                        img.src = url + format;
+                        if (img.complete) return;
+                    });
+                }
+            }
+    
+            // img 태그의 src 속성이 비어있으면 이미지 자동 가져오기
+            if (!imgElement.hasAttribute('src')) {
+                fetchImage(dataUrl);
             }
         });
     });
