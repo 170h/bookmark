@@ -435,64 +435,54 @@
         <div data-url="https://korjpntranslate.blogspot.com/">자막</div>
     </section>
     <script>
-    function navigateToUrl(divElement) {
-        const url = divElement.getAttribute("data-url");
-        window.open(url, "_self");
-    }
-    
-    async function fetchIcon(url) {
-        try {
-            const response = await fetch(url);
-            const html = await response.text();
-    
-            // HTML에서 <link rel="icon"> 태그 찾기
-            const iconLink = html.match(/<link rel="icon" href="([^"]+)">/);
-            if (iconLink) {
-                return iconLink[1];
-            }
-    
-            // 헤더 정보에서 아이콘 URL 찾기
-            const linkHeader = response.headers.get('Link');
-            if (linkHeader) {
-                const iconUrl = linkHeader.match(/<([^>]+)>; rel="icon"/);
-                if (iconUrl) {
-                    return iconUrl[1];
-                }
-            }
-    
-            // 마지막 수단으로 이미지 태그 검색
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, 'text/html');
-            const images = doc.querySelectorAll('img');
-            for (const img of images) {
-                const src = img.getAttribute('src');
-                if (src && src.endsWith('.png') || src.endsWith('.jpg') || src.endsWith('.jpeg') || src.endsWith('.svg')) {
-                    return src;
-                }
-            }
-    
-        } catch (error) {
-            console.error("Icon fetch error:", error);
-            return null;
+        function navigateToUrl(divElement) {
+            const url = divElement.getAttribute("data-url");
+            window.open(url, "_self");
         }
-    }
     
-    document.addEventListener('DOMContentLoaded', async function() {
-        const bookmarks = document.querySelectorAll('.bookmark div[data-url]');
+        const iconCache = {}; // 아이콘 캐싱을 위한 객체
     
-        bookmarks.forEach(async bookmark => {
-            const imgElement = bookmark.querySelector('img');
-            const dataUrl = bookmark.getAttribute('data-url');
+        async function fetchIcon(url) {
+            if (iconCache[url]) {
+                return iconCache[url]; // 캐시된 아이콘이 있으면 반환
+            }
     
-            const iconUrl = await fetchIcon(dataUrl);
-            if (iconUrl) {
-                imgElement.src = iconUrl;
-            } else {
-                // 아이콘을 찾지 못했을 때 처리 (예: 기본 이미지 설정)
-                imgElement.src = 'default_icon.png';
+            try {
+                // ... (기존 fetchIcon 함수 내용) ...
+    
+                if (iconUrl) {
+                    iconCache[url] = iconUrl; // 가져온 아이콘을 캐시에 저장
+                    return iconUrl;
+                }
+    
+            } catch (error) {
+                console.error("Icon fetch error:", error);
+                return null;
+            }
+        }
+    
+        document.addEventListener('DOMContentLoaded', async function() {
+            const bookmarks = document.querySelectorAll('.bookmark div[data-url]');
+    
+            // for...of 루프를 사용하여 비동기 처리 보장
+            for (const bookmark of bookmarks) {
+                const imgElement = bookmark.querySelector('img');
+                const dataUrl = bookmark.getAttribute('data-url');
+    
+                // img src 속성에 값이 있으면 그대로 사용
+                if (imgElement.src) {
+                    continue;
+                }
+    
+                const iconUrl = await fetchIcon(dataUrl);
+                if (iconUrl) {
+                    imgElement.src = iconUrl;
+                } else {
+                    // 기본 이미지 경로를 절대 경로로 설정
+                    imgElement.src = '/path/to/default_icon.png';
+                }
             }
         });
-    });
     </script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
