@@ -451,9 +451,25 @@
                 return iconLink[1];
             }
     
-            // 헤더 정보에서 아이콘 URL 찾기 (추가 구현 필요)
+            // 헤더 정보에서 아이콘 URL 찾기
+            const linkHeader = response.headers.get('Link');
+            if (linkHeader) {
+                const iconUrl = linkHeader.match(/<([^>]+)>; rel="icon"/);
+                if (iconUrl) {
+                    return iconUrl[1];
+                }
+            }
     
-            // 마지막 수단으로 이미지 태그 검색 (추가 구현 필요)
+            // 마지막 수단으로 이미지 태그 검색
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            const images = doc.querySelectorAll('img');
+            for (const img of images) {
+                const src = img.getAttribute('src');
+                if (src && src.endsWith('.png') || src.endsWith('.jpg') || src.endsWith('.jpeg') || src.endsWith('.svg')) {
+                    return src;
+                }
+            }
     
         } catch (error) {
             console.error("Icon fetch error:", error);
