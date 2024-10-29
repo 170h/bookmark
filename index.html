@@ -439,18 +439,41 @@
         const url = divElement.getAttribute("data-url");
         window.open(url, "_self");
     }
-
-    document.addEventListener('DOMContentLoaded', function() {
+    
+    async function fetchIcon(url) {
+        try {
+            const response = await fetch(url);
+            const html = await response.text();
+    
+            // HTML에서 <link rel="icon"> 태그 찾기
+            const iconLink = html.match(/<link rel="icon" href="([^"]+)">/);
+            if (iconLink) {
+                return iconLink[1];
+            }
+    
+            // 헤더 정보에서 아이콘 URL 찾기 (추가 구현 필요)
+    
+            // 마지막 수단으로 이미지 태그 검색 (추가 구현 필요)
+    
+        } catch (error) {
+            console.error("Icon fetch error:", error);
+            return null;
+        }
+    }
+    
+    document.addEventListener('DOMContentLoaded', async function() {
         const bookmarks = document.querySelectorAll('.bookmark div[data-url]');
-
-        bookmarks.forEach(bookmark => {
+    
+        bookmarks.forEach(async bookmark => {
             const imgElement = bookmark.querySelector('img');
-            const imgSrc = imgElement.getAttribute('src');
-
-            if (imgSrc.trim() === '') {
-                // img 태그의 src가 비어있으면 data-url로 파비콘을 가져온다.
-                const dataUrl = bookmark.getAttribute('data-url');
-                imgElement.src = dataUrl + '/favicon.ico';
+            const dataUrl = bookmark.getAttribute('data-url');
+    
+            const iconUrl = await fetchIcon(dataUrl);
+            if (iconUrl) {
+                imgElement.src = iconUrl;
+            } else {
+                // 아이콘을 찾지 못했을 때 처리 (예: 기본 이미지 설정)
+                imgElement.src = 'default_icon.png';
             }
         });
     });
