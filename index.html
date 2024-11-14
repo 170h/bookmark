@@ -72,11 +72,13 @@
         border-radius: 24px;
         border: 1px solid #dedede;
         cursor: pointer;
+        transition: transform .3s ease, box-shadow 0.3s ease;
     }
 
     .bookmark>div:hover span {
         box-shadow: 0 2px 10px rgba(0, 0, 0, .2);
-        transition: box-shadow 0.3s ease;
+        transform: translateY(-2px);
+        transition: transform .3s ease, box-shadow 0.3s ease;
     }
 
     .bookmark>div>span>img {
@@ -115,6 +117,7 @@
         font-size: 13px;
         font-weight: 500;
         cursor: pointer;
+        transition: transform .3s ease, box-shadow 0.3s ease;
     }
     .link > div[color="red"] {
         background: #FF2D55;
@@ -130,7 +133,8 @@
     }
     .link>div:hover {
         box-shadow: 0 2px 10px rgba(0, 0, 0, .2);
-        transition: box-shadow 0.3s ease, color 0.3s ease, background 0.3s ease;
+        transform: translateY(-2px);
+        transition: transform .3s ease, box-shadow 0.3s ease, color 0.3s ease, background 0.3s ease;
     }
 
     [data-tooltip]::before {
