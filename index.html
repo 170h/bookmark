@@ -1,68 +1,74 @@
 <!DOCTYPE html>
 <html lang="ko">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bookmark</title>
-    <link href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/static/woff2/SUIT.css" rel="stylesheet">
-    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/786/786352.png" type="image/x-icon">
-    <meta name="theme-color" content="#ffffff">
+    <link
+      href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/static/woff2/SUIT.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="shortcut icon"
+      href="https://cdn-icons-png.flaticon.com/512/786/786352.png"
+      type="image/x-icon"
+    />
+    <meta name="theme-color" content="#ffffff" />
     <style>
-    body {
-        font-family: 'SUIT', sans-serif;
+      body {
+        font-family: "SUIT", sans-serif;
         margin: 0 24px;
         padding: 0;
         background: #f9f9f9;
-    }
+      }
 
-    a {
+      a {
         text-decoration: none;
         color: black;
-    }
+      }
 
-    a:hover,
-    a:active,
-    a:focus {
+      a:hover,
+      a:active,
+      a:focus {
         text-decoration: none !important;
-        color: rgba(0, 0, 0, .5);
+        color: rgba(0, 0, 0, 0.5);
         cursor: pointer;
         -webkit-transition: color 0.5s ease;
         transition: color 0.5s ease;
-    }
+      }
 
-    p {
+      p {
         font-size: 13px;
         margin: 5px 0 0;
         font-weight: 500;
         text-align: center;
-    }
+      }
 
-    small {
+      small {
         font-size: 10px;
-        color: rgba(0, 0, 0, .7);
-    }
+        color: rgba(0, 0, 0, 0.7);
+      }
 
-    section {
+      section {
         margin: 0 auto;
         max-width: 1280px;
         min-width: 320px;
-    }
+      }
 
-    .bookmark {
+      .bookmark {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
         grid-column-gap: 6px;
         grid-row-gap: 18px;
-    }
+      }
 
-    .bookmark>div {
+      .bookmark > div {
         display: flex;
         align-items: center;
         flex-direction: column;
-    }
+      }
 
-    .bookmark>div>span {
+      .bookmark > div > span {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -70,24 +76,25 @@
         height: 48px;
         background: #ffffff;
         border-radius: 24px;
-        box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.10);
+        box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
         cursor: pointer;
-        transition: transform .3s ease, box-shadow 0.3s ease;
-    }
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
 
-    .bookmark>div:hover span {
-        box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.10), 0 2px 10px rgba(0, 0, 0, .2);
+      .bookmark > div:hover span {
+        box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1),
+          0 2px 10px rgba(0, 0, 0, 0.2);
         transform: translateY(-2px);
-        transition: transform .3s ease, box-shadow 0.3s ease;
-    }
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
 
-    .bookmark>div>span>img {
+      .bookmark > div > span > img {
         width: 24px;
         height: 24px;
         border-radius: 3px;
-    }
+      }
 
-    .bookmark .title {
+      .bookmark .title {
         display: flex;
         grid-column: 1 / -1;
         font-weight: bold;
@@ -95,94 +102,103 @@
         align-items: flex-start;
         padding: 32px 12px 6px;
         border-bottom: 1px solid #ccc;
-    }
+      }
 
-    .link {
+      .link {
         display: flex;
         flex-wrap: wrap;
         gap: 12px;
         border-top: 1px solid #ccc;
         margin: 32px auto 256px;
         padding-top: 16px;
-    }
+      }
 
-    .link > div {
+      .link > div {
         display: inline-flex;
         justify-content: center;
         align-items: center;
         padding: 0 16px;
         height: 32px;
-        box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.10);
+        box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
         border-radius: 16px;
         background: #fff;
         font-size: 13px;
         font-weight: 500;
         cursor: pointer;
-        transition: transform .3s ease, box-shadow 0.3s ease;
-    }
-    .link > div[color="red"] {
-        background: #FF2D55;
-        color: #FFF;
-    }
-    .link > div[color="orange"] {
-        background: #F15A3C;
-        color: #FFF;
-    }
-    .link > div[color="blue"] {
-        background: #2392FF;
-        color: #FFF;
-    }
-    .link>div:hover {
-        box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.10), 0 2px 10px rgba(0, 0, 0, .2);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .link > div[color="red"] {
+        background: #ff2d55;
+        color: #fff;
+      }
+      .link > div[color="orange"] {
+        background: #f15a3c;
+        color: #fff;
+      }
+      .link > div[color="blue"] {
+        background: #2392ff;
+        color: #fff;
+      }
+      .link > div:hover {
+        box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1),
+          0 2px 10px rgba(0, 0, 0, 0.2);
         transform: translateY(-2px);
-        transition: transform .3s ease, box-shadow 0.3s ease, color 0.3s ease, background 0.3s ease;
-    }
+        transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease,
+          background 0.3s ease;
+      }
 
-    [data-tooltip]::before {
+      [data-tooltip]::before {
         position: absolute;
         content: attr(data-tooltip);
         opacity: 0;
-        color: #FFF;
-    }
+        color: #fff;
+      }
 
-    [data-tooltip]:hover::before {
+      [data-tooltip]:hover::before {
         opacity: 1;
         transition: opacity 0.3s ease;
-    }
+      }
 
-    [data-tooltip]:not([data-tooltip-persistent])::before {
+      [data-tooltip]:not([data-tooltip-persistent])::before {
         pointer-events: none;
-    }
-    .search-box {
+      }
+      .search-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100vh;
+      }
+      .search-box {
         position: relative;
         width: 300px;
         margin-top: 24px;
         padding: 0 12px;
-    }
-    .search-box input[type="text"] {
-        font-family: 'SUIT', sans-serif;
+      }
+      .search-box input[type="text"] {
+        font-family: "SUIT", sans-serif;
         display: flex;
         width: 100%;
         justify-content: flex-start;
         align-items: center;
         padding: 10px 40px 10px 10px; /* 왼쪽 여백을 늘려 아이콘 공간 확보 */
-        font-size: 13px;
+        font-size: 15px;
         box-sizing: border-box;
         border: 1px solid #ccc;
-    }
-    .search-box input[type="text"]:hover, .search-box input[type="text"]:focus {
+      }
+      .search-box input[type="text"]:hover,
+      .search-box input[type="text"]:focus {
         border: 1px solid #777;
         outline: none;
-    }
-    .search-box img {
+      }
+      .search-box img {
         position: absolute;
         top: 50%;
         left: 10px;
         transform: translateY(-50%);
         width: 20px;
         height: 20px;
-    }
-    .search-box button {
+      }
+      .search-box button {
         position: absolute;
         top: 50%;
         right: 52px;
@@ -191,389 +207,654 @@
         border: none;
         cursor: pointer;
         padding: 0;
-    }
-    .search-box button img {
+      }
+      .search-box button img {
         width: 20px;
         height: 20px;
-    }
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <section class="search-container">
-        <form action="https://www.google.com/search" method="get" target="_blank">
-            <div class="search-box">
-                <input type="text" id="search" name="q" placeholder="Search Google" required>
-                <button type="submit">
-                    <img src="https://cdn3.iconfinder.com/data/icons/feather-5/24/search-512.png" alt="Search">
-                </button>
-            </div>
-        </form>
+      <form action="https://www.google.com/search" method="get" target="_blank">
+        <div class="search-box">
+          <input
+            type="text"
+            id="search"
+            name="q"
+            placeholder="Search Google"
+            required
+          />
+          <button type="submit">
+            <img
+              src="https://cdn3.iconfinder.com/data/icons/feather-5/24/search-512.png"
+              alt="Search"
+            />
+          </button>
+        </div>
+      </form>
+      <div>
+        <div id="countdown" data-d-day="2024-12-31">Loading...</div>
+      </div>
     </section>
     <section class="bookmark">
-        <div class="title">
-            Favorites
-        </div>
-        <div data-url="https://github.com/" onclick="navigateToUrl(this)">
-            <span><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png"></span>
-            <p>GitHub</p>
-        </div>
-        <div data-url="https://app.plex.tv/desktop/#!" onclick="navigateToUrl(this)">
-            <span><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSA2BCERhA04K0et8z9g8JRiss1RiVadSmohQ&s"></span>
-            <p>Plex</p>
-        </div>
-        <div data-url="https://www.youtube.com/" onclick="navigateToUrl(this)">
-            <span><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png"></span>
-            <p>Youtube</p>
-        </div>
-        <div data-url="https://mail.google.com/" onclick="navigateToUrl(this)">
-            <span><img src="https://cdn.iconscout.com/icon/free/png-256/free-gmail-2981844-2476484.png"></span>
-            <p>Gmail</p>
-        </div>
-        <div data-url="https://docs.google.com/spreadsheets/u/0/" onclick="navigateToUrl(this)">
-            <span><img src="https://www.gstatic.com/images/branding/product/2x/sheets_2020q4_48dp.png"></span>
-            <p>Google Sheets</p>
-        </div>
-        <div data-url="https://analytics.google.com/analytics/web/?utm_source=OGB&utm_medium=app&authuser=0#/p376542918/reports/intelligenthome" onclick="navigateToUrl(this)">
-            <span><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQBxgGkG-plps8m75vkLW4z5_XWdI2Wwu9rw&s"></span>
-            <p>Google Analytics</p>
-        </div>
-        <div data-url="https://drive.google.com/drive/u/5/home" onclick="navigateToUrl(this)">
-            <span><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3RaendkWxwbnlsA8UyDPmcDbqIMQETxKYpw&s"></span>
-            <p>Google Drive</p>
-        </div>
-        <div data-url="https://docs.python.org/ko/3.13/library/index.html" onclick="navigateToUrl(this)">
-            <span><img src="https://cdn-icons-png.flaticon.com/512/5968/5968350.png"></span>
-            <p>Python Standard Library</p>
-        </div>
-        <div data-url="https://pypi.org/" onclick="navigateToUrl(this)">
-            <span><img src="https://seeklogo.com/images/P/pypi-logo-5B953CE804-seeklogo.com.png"></span>
-            <p>Pypi</p>
-        </div>
-        <div data-url="https://nomadcoders.co/" onclick="navigateToUrl(this)">
-            <span><img src="https://nomadcoders.co/m.svg"></span>
-            <p>Nomadcoders</p>
-        </div>
-        <div data-url="https://www.udemy.com/" onclick="navigateToUrl(this)">
-            <span><img src="https://asset.brandfetch.io/idTqV2BNgX/iddwu7h7Fu.png"></span>
-            <p>Udemy</p>
-        </div>
-        <div data-url="https://ocw.mit.edu/" onclick="navigateToUrl(this)">
-            <span><img src="https://avatars.githubusercontent.com/u/3009146?s=280&v=4"></span>
-            <p>MIT OCW</p>
-        </div>
-        <div data-url="https://www.ted.com/talks" onclick="navigateToUrl(this)">
-            <span><img src="https://cdn.iconscout.com/icon/free/png-256/free-ted-5-282539.png"></span>
-            <p>TED Talks</p>
-        </div>
+      <div class="title">Favorites</div>
+      <div data-url="https://github.com/" onclick="navigateToUrl(this)">
+        <span
+          ><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
+        /></span>
+        <p>GitHub</p>
+      </div>
+      <div
+        data-url="https://app.plex.tv/desktop/#!"
+        onclick="navigateToUrl(this)"
+      >
+        <span
+          ><img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSA2BCERhA04K0et8z9g8JRiss1RiVadSmohQ&s"
+        /></span>
+        <p>Plex</p>
+      </div>
+      <div data-url="https://www.youtube.com/" onclick="navigateToUrl(this)">
+        <span
+          ><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png"
+        /></span>
+        <p>Youtube</p>
+      </div>
+      <div data-url="https://mail.google.com/" onclick="navigateToUrl(this)">
+        <span
+          ><img
+            src="https://cdn.iconscout.com/icon/free/png-256/free-gmail-2981844-2476484.png"
+        /></span>
+        <p>Gmail</p>
+      </div>
+      <div
+        data-url="https://docs.google.com/spreadsheets/u/0/"
+        onclick="navigateToUrl(this)"
+      >
+        <span
+          ><img
+            src="https://www.gstatic.com/images/branding/product/2x/sheets_2020q4_48dp.png"
+        /></span>
+        <p>Google Sheets</p>
+      </div>
+      <div
+        data-url="https://analytics.google.com/analytics/web/?utm_source=OGB&utm_medium=app&authuser=0#/p376542918/reports/intelligenthome"
+        onclick="navigateToUrl(this)"
+      >
+        <span
+          ><img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQBxgGkG-plps8m75vkLW4z5_XWdI2Wwu9rw&s"
+        /></span>
+        <p>Google Analytics</p>
+      </div>
+      <div
+        data-url="https://drive.google.com/drive/u/5/home"
+        onclick="navigateToUrl(this)"
+      >
+        <span
+          ><img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3RaendkWxwbnlsA8UyDPmcDbqIMQETxKYpw&s"
+        /></span>
+        <p>Google Drive</p>
+      </div>
+      <div
+        data-url="https://docs.python.org/ko/3.13/library/index.html"
+        onclick="navigateToUrl(this)"
+      >
+        <span
+          ><img src="https://cdn-icons-png.flaticon.com/512/5968/5968350.png"
+        /></span>
+        <p>Python Standard Library</p>
+      </div>
+      <div data-url="https://pypi.org/" onclick="navigateToUrl(this)">
+        <span
+          ><img
+            src="https://seeklogo.com/images/P/pypi-logo-5B953CE804-seeklogo.com.png"
+        /></span>
+        <p>Pypi</p>
+      </div>
+      <div data-url="https://nomadcoders.co/" onclick="navigateToUrl(this)">
+        <span><img src="https://nomadcoders.co/m.svg" /></span>
+        <p>Nomadcoders</p>
+      </div>
+      <div data-url="https://www.udemy.com/" onclick="navigateToUrl(this)">
+        <span
+          ><img src="https://asset.brandfetch.io/idTqV2BNgX/iddwu7h7Fu.png"
+        /></span>
+        <p>Udemy</p>
+      </div>
+      <div data-url="https://ocw.mit.edu/" onclick="navigateToUrl(this)">
+        <span
+          ><img src="https://avatars.githubusercontent.com/u/3009146?s=280&v=4"
+        /></span>
+        <p>MIT OCW</p>
+      </div>
+      <div data-url="https://www.ted.com/talks" onclick="navigateToUrl(this)">
+        <span
+          ><img
+            src="https://cdn.iconscout.com/icon/free/png-256/free-ted-5-282539.png"
+        /></span>
+        <p>TED Talks</p>
+      </div>
     </section>
     <section class="bookmark">
-        <div class="title">
-            AI
-        </div>
-        <div data-url="https://chat.openai.com/" onclick="navigateToUrl(this)">
-            <span><img src="https://cdn.worldvectorlogo.com/logos/chatgpt-6.svg"></span>
-            <p>ChatGPT</p>
-            <small>LLM</small>
-        </div>
-        <div data-url="https://claude.ai/login?returnTo=%2F%3F" onclick="navigateToUrl(this)">
-            <span><img src="data:image/jpeg;base64,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"></span>
-            <p>Claude</p>
-            <small>LLM</small>
-        </div>
-        <div data-url="https://chat.lmsys.org/" onclick="navigateToUrl(this)">
-            <span><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAw1BMVEX////+9ez7tWv7u3H++PL7vYn5iAD5lAD5mQD7z5P8zrH5hQD5owD5qwD94rn94tP5iS35fQD8y5v8ypT5pQD6vTj+8dr6mmH5bAD6rWf6u135sAD5tQD60Wv7tY75cgD5dgD5kDT+8eT969H5tir5ugD5vwD84pb//fz5fBL5jgD7uXz84K/5xQD5xwD5zwv4YwD8waD5ngD8yaT82pb++uv5ni786q/7qYP5tAD7x4f734v723v856L83aD82KX7yonabGiaAAABMUlEQVR4AcWS1YICIRRAsQam1kWd7oBF7O74/69a7H72vp6bB8C3o1AslT+xigQRkt8iRZUgRJqm/7yg6i+WJKlWRw1dN8wHVLZsrGKnLMa6Dc/3g7vRoR3FcVIFIC0AkOUeofTvjFgkUFMR9SXIWwyANqGdbu8E034cRwMA5OEQIa6OABgL2J2c6EB0tad5ozFEkHM8zYmAs8tMNlcXvqc3loxVuFiIdFbstuyakoXX4BXAlg3dIx6eX+Gm06G+McWcQzRsNPKpHUe2cmJmt9shWwBGKkfDobYTp4n1+4XTxF63Q4mQVi5yuGRCZDOO7fjSd0Up8QzzJKH6G4uu4U3RJPDFQu5Bn4Mxtq3Hl8tyXddQrS7sYyHyOdoNTUMQSqoC3sUeIShVPn+TYhl8Of4BaxUezgKyWLEAAAAASUVORK5CYII="></span>
-            <p>LMSYS</p>
-            <small>LLM</small>
-        </div>
-        <div data-url="https://gemini.google.com/app?hl=ko" onclick="navigateToUrl(this)">
-            <span><img src="data:image/png;base64,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"></span>
-            <p>Gemini</p>
-            <small>LLM</small>
-        </div>
-        <div data-url="https://copilot.microsoft.com/" onclick="navigateToUrl(this)">
-            <span><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjmJajFJdxJlZcy2iVli5r3CcFD6C2T1qQoA&s"></span>
-            <p>Copilot</p>
-            <small>LLM</small>
-        </div>
-        <div data-url="https://www.perplexity.ai/" onclick="navigateToUrl(this)">
-            <span><img src="https://knowprose.com/wp-content/uploads/2024/04/turquoise402xperplexity.ai_.png"></span>
-            <p>Perplexity</p>
-            <small>LLM</small>
-        </div>
-        <div data-url="https://huggingface.co/spaces/multimodalart/FLUX.1-merged" onclick="navigateToUrl(this)">
-            <span><img src="https://blackforestlabs.ai/wp-content/uploads/2024/07/bfl_logo_retraced_blk.png"></span>
-            <p>FLUX Merged</p>
-            <small>생성형 이미지</small>
-        </div>
-        <div data-url="https://blackforestlabs.ai/#get-flux" onclick="navigateToUrl(this)">
-            <span><img src="https://blackforestlabs.ai/wp-content/uploads/2024/07/bfl_logo_retraced_blk.png"></span>
-            <p>FLUX</p>
-            <small>생성형 이미지</small>
-        </div>
-        <div data-url="https://firefly.adobe.com/?ff_channel=adobe_com&ff_campaign=ffly_homepage&ff_source=firefly_seo" onclick="navigateToUrl(this)">
-            <span><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Adobe_Firefly_Logo.svg/2101px-Adobe_Firefly_Logo.svg.png"></span>
-            <p>Firefly</p>
-            <small>생성형 이미지</small>
-        </div>
-        <div data-url="https://app.runwayml.com/video-tools/teams/2018620161/ai-tools/generative-video" onclick="navigateToUrl(this)">
-            <span><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwDMhyhLZOZQzGhqa5Y9i-8O2cpvxC3jPrrA&s"></span>
-            <p>Runway</p>
-            <small>생성형 이미지와 비디오</small>
-        </div>
-        <div data-url="https://huggingface.co/spaces/shariqfarooq/ZoeDepth" onclick="navigateToUrl(this)">
-            <span><img src="https://cdn.worldvectorlogo.com/logos/huggingface-2.svg"></span>
-            <p>ZoeDepth</p>
-            <small>3D 생성형 이미지</small>
-        </div>
-        <div data-url="https://www.midjourney.com/home" onclick="navigateToUrl(this)">
-            <span><img src="https://upload.wikimedia.org/wikipedia/commons/e/e6/Midjourney_Emblem.png"></span>
-            <p>Midjourney</p>
-            <small>생성형 이미지와 비디오</small>
-        </div>
-        <div data-url="https://lumalabs.ai/dream-machine/creations" onclick="navigateToUrl(this)">
-            <span><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKGBpu76tkhG-9NW7yKpYC9SHGFoGyRvQmRg&s"></span>
-            <p>Luma DM</p>
-            <small>생성형 비디오</small>
-        </div>
-        <div data-url="https://lexica.art/" onclick="navigateToUrl(this)">
-            <span><img src="https://cdn-1.webcatalog.io/catalog/lexica/lexica-icon-filled-256.webp?v=1714776715500"></span>
-            <p>Lexica</p>
-            <small>Community</small>
-        </div>
-        <div data-url="https://civitai.com/" onclick="navigateToUrl(this)">
-            <span><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQWdA162vUoHRKf4LLwxU7NKDve3oY_7UnCg&s"></span>
-            <p>Civitai</p>
-            <small>Community</small>
-        </div>
-        <div data-url="https://www.shakker.ai/ko/home" onclick="navigateToUrl(this)">
-            <span><img src="https://cdn-1.webcatalog.io/catalog/shakker-ai/shakker-ai-icon-filled-256.png?v=1724133892680"></span>
-            <p>Shakker</p>
-            <small>Community</small>
-        </div>
-        <div data-url="https://www.liblib.art/" onclick="navigateToUrl(this)">
-            <span><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKrOCg3I9eeyqp_xz6MecCIgdwTaTfjFtarw&s"></span>
-            <p>LiblibAI</p>
-            <small>Community</small>
-        </div>
-        <div data-url="https://huggingface.co/" onclick="navigateToUrl(this)">
-            <span><img src="https://cdn.worldvectorlogo.com/logos/huggingface-2.svg"></span>
-            <p>Hugging Face</p>
-            <small>Resources</small>
-        </div>
-    </section>
-     <section class="bookmark">
-        <div class="title">
-            Design References
-        </div>
-        <div data-url="https://dribbble.com/" onclick="navigateToUrl(this)">
-            <span><img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/dribbble-1867906-1580061.png?f=webp"></span>
-            <p>Dribbble</p>
-        </div>
-        <div data-url="https://www.behance.net/" onclick="navigateToUrl(this)">
-            <span><img src="https://cdn.icon-icons.com/icons2/1584/PNG/512/3721681-behance_108059.png"></span>
-            <p>Behance</p>
-        </div>
-        <div data-url="https://kr.pinterest.com/" onclick="navigateToUrl(this)">
-            <span><img src="https://cdn0.iconfinder.com/data/icons/Pinterest/512/Pinterest_Favicon.png"></span>
-            <p>Pinterest</p>
-        </div>
-        <div data-url="https://coolors.co/" onclick="navigateToUrl(this)">
-            <span><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWrruHgtcMkZ38CIpyyTUIC7rsiu9Foxkb6Q&s"></span>
-            <p>Coolors</p>
-        </div>
-        <div data-url="https://www.khroma.co/" onclick="navigateToUrl(this)">
-            <span><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrXbMRHswlNl6fs30SUV7VffGnHfw15-1snA&s"></span>
-            <p>Khroma</p>
-        </div>
-    </section>
-    <section class="bookmark">
-        <div class="title">
-            Stock Contributors
-        </div>
-        <div data-url="https://contributor.stock.adobe.com/" onclick="navigateToUrl(this)">
-            <span><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwvlgleC97VBtyr_TLK2MUO7CnWylRJzkEpw&s"></span>
-            <p>Adobe Stock</p>
-        </div>
-        <div data-url="https://submit.shutterstock.com/" onclick="navigateToUrl(this)">
-            <span><img src="https://submit.shutterstock.com/assets/images/Contributor_Favicon_32.png"></span>
-            <p>Shutterstock</p>
-        </div>
-        <div data-url="https://esp.gettyimages.com/" onclick="navigateToUrl(this)">
-            <span><img src="https://cdn.iconscout.com/icon/free/png-256/free-gettyimages-461794.png"></span>
-            <p>Gettyimages</p>
-        </div>
-        <div data-url="https://www.iconfinder.com/" onclick="navigateToUrl(this)">
-            <span><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZdJMD4bMIbDUxk5Vo0ua4L_lz6iCMCxESqQ&s"></span>
-            <p>Iconfinder</p>
-        </div>
-        <div data-url="https://creativemarket.com/" onclick="navigateToUrl(this)">
-            <span><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSU0LHU1J8JWlTCXWB52S5MDuXm-7ajUoMxeQ&s"></span>
-            <p>Creative Market</p>
-        </div>
-        <div data-url="https://graphicriver.net/" onclick="navigateToUrl(this)">
-            <span><img src="https://assets.market-storefront.envato-static.com/storefront/assets/og-images/graphicriver-3a7a4fb0c989f07658faec8a10d5aa5200f5742f371c38cbeb7f17b04a58bfff.png"></span>
-            <p>Graphicriver</p>
-        </div>
-    </section>
-    <section class="bookmark">
-        <div class="title">
-            Projects
-        </div>
-        <div data-url="https://spline.design/" onclick="navigateToUrl(this)">
-            <span><img src="https://spline.design/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fspline_logo.647803e0.png&w=128&q=75"></span>
-            <p>Spline</p>
-        </div>
-        <div data-url="https://editor.rive.app/home" onclick="navigateToUrl(this)">
-            <span><img src="https://framerusercontent.com/images/jMyKrhKKXqpc15qYqC3A0pZELw.png"></span>
-            <p>RIVE</p>
-        </div>
-        <div data-url="https://www.figma.com/" onclick="navigateToUrl(this)">
-            <span><img src="https://cdn4.iconfinder.com/data/icons/logos-brands-in-colors/3000/figma-logo-512.png"></span>
-            <p>Figma</p>
-        </div>
-        <div data-url="https://replit.com/~" onclick="navigateToUrl(this)">
-            <span><img src="https://cdn.replit.com/dotcom/favicon-196.png"></span>
-            <p>Replit</p>
-        </div>
-        <div data-url="https://app.sketchup.com/app" onclick="navigateToUrl(this)">
-            <span><img src="https://sketchup.buildingpoint.co.nz/wp-content/uploads/2023/10/cropped-sketchup-icon.png"></span>
-            <p>SketchUp</p>
-        </div>
-        <div data-url="https://3dwarehouse.sketchup.com/" onclick="navigateToUrl(this)">
-            <span><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX8_DjS2f9FhelTNPGCYNg1p7Gg_Tq6phVUA&s"></span>
-            <p>3D Warehouse</p>
-        </div>
-        <div data-url="https://extensions.sketchup.com/" onclick="navigateToUrl(this)">
-            <span><img src="https://extensions.sketchup.com/assets/extensionwarehouselogo.22bbc3e4.svg"></span>
-            <p>Extension Warehouse</p>
-        </div>
+      <div class="title">AI</div>
+      <div data-url="https://chat.openai.com/" onclick="navigateToUrl(this)">
+        <span
+          ><img src="https://cdn.worldvectorlogo.com/logos/chatgpt-6.svg"
+        /></span>
+        <p>ChatGPT</p>
+        <small>LLM</small>
+      </div>
+      <div
+        data-url="https://claude.ai/login?returnTo=%2F%3F"
+        onclick="navigateToUrl(this)"
+      >
+        <span
+          ><img
+            src="data:image/jpeg;base64,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"
+        /></span>
+        <p>Claude</p>
+        <small>LLM</small>
+      </div>
+      <div data-url="https://chat.lmsys.org/" onclick="navigateToUrl(this)">
+        <span
+          ><img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAw1BMVEX////+9ez7tWv7u3H++PL7vYn5iAD5lAD5mQD7z5P8zrH5hQD5owD5qwD94rn94tP5iS35fQD8y5v8ypT5pQD6vTj+8dr6mmH5bAD6rWf6u135sAD5tQD60Wv7tY75cgD5dgD5kDT+8eT969H5tir5ugD5vwD84pb//fz5fBL5jgD7uXz84K/5xQD5xwD5zwv4YwD8waD5ngD8yaT82pb++uv5ni786q/7qYP5tAD7x4f734v723v856L83aD82KX7yonabGiaAAABMUlEQVR4AcWS1YICIRRAsQam1kWd7oBF7O74/69a7H72vp6bB8C3o1AslT+xigQRkt8iRZUgRJqm/7yg6i+WJKlWRw1dN8wHVLZsrGKnLMa6Dc/3g7vRoR3FcVIFIC0AkOUeofTvjFgkUFMR9SXIWwyANqGdbu8E034cRwMA5OEQIa6OABgL2J2c6EB0tad5ozFEkHM8zYmAs8tMNlcXvqc3loxVuFiIdFbstuyakoXX4BXAlg3dIx6eX+Gm06G+McWcQzRsNPKpHUe2cmJmt9shWwBGKkfDobYTp4n1+4XTxF63Q4mQVi5yuGRCZDOO7fjSd0Up8QzzJKH6G4uu4U3RJPDFQu5Bn4Mxtq3Hl8tyXddQrS7sYyHyOdoNTUMQSqoC3sUeIShVPn+TYhl8Of4BaxUezgKyWLEAAAAASUVORK5CYII="
+        /></span>
+        <p>LMSYS</p>
+        <small>LLM</small>
+      </div>
+      <div
+        data-url="https://gemini.google.com/app?hl=ko"
+        onclick="navigateToUrl(this)"
+      >
+        <span
+          ><img
+            src="data:image/png;base64,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"
+        /></span>
+        <p>Gemini</p>
+        <small>LLM</small>
+      </div>
+      <div
+        data-url="https://copilot.microsoft.com/"
+        onclick="navigateToUrl(this)"
+      >
+        <span
+          ><img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjmJajFJdxJlZcy2iVli5r3CcFD6C2T1qQoA&s"
+        /></span>
+        <p>Copilot</p>
+        <small>LLM</small>
+      </div>
+      <div data-url="https://www.perplexity.ai/" onclick="navigateToUrl(this)">
+        <span
+          ><img
+            src="https://knowprose.com/wp-content/uploads/2024/04/turquoise402xperplexity.ai_.png"
+        /></span>
+        <p>Perplexity</p>
+        <small>LLM</small>
+      </div>
+      <div
+        data-url="https://huggingface.co/spaces/multimodalart/FLUX.1-merged"
+        onclick="navigateToUrl(this)"
+      >
+        <span
+          ><img
+            src="https://blackforestlabs.ai/wp-content/uploads/2024/07/bfl_logo_retraced_blk.png"
+        /></span>
+        <p>FLUX Merged</p>
+        <small>생성형 이미지</small>
+      </div>
+      <div
+        data-url="https://blackforestlabs.ai/#get-flux"
+        onclick="navigateToUrl(this)"
+      >
+        <span
+          ><img
+            src="https://blackforestlabs.ai/wp-content/uploads/2024/07/bfl_logo_retraced_blk.png"
+        /></span>
+        <p>FLUX</p>
+        <small>생성형 이미지</small>
+      </div>
+      <div
+        data-url="https://firefly.adobe.com/?ff_channel=adobe_com&ff_campaign=ffly_homepage&ff_source=firefly_seo"
+        onclick="navigateToUrl(this)"
+      >
+        <span
+          ><img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Adobe_Firefly_Logo.svg/2101px-Adobe_Firefly_Logo.svg.png"
+        /></span>
+        <p>Firefly</p>
+        <small>생성형 이미지</small>
+      </div>
+      <div
+        data-url="https://app.runwayml.com/video-tools/teams/2018620161/ai-tools/generative-video"
+        onclick="navigateToUrl(this)"
+      >
+        <span
+          ><img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwDMhyhLZOZQzGhqa5Y9i-8O2cpvxC3jPrrA&s"
+        /></span>
+        <p>Runway</p>
+        <small>생성형 이미지와 비디오</small>
+      </div>
+      <div
+        data-url="https://huggingface.co/spaces/shariqfarooq/ZoeDepth"
+        onclick="navigateToUrl(this)"
+      >
+        <span
+          ><img src="https://cdn.worldvectorlogo.com/logos/huggingface-2.svg"
+        /></span>
+        <p>ZoeDepth</p>
+        <small>3D 생성형 이미지</small>
+      </div>
+      <div
+        data-url="https://www.midjourney.com/home"
+        onclick="navigateToUrl(this)"
+      >
+        <span
+          ><img
+            src="https://upload.wikimedia.org/wikipedia/commons/e/e6/Midjourney_Emblem.png"
+        /></span>
+        <p>Midjourney</p>
+        <small>생성형 이미지와 비디오</small>
+      </div>
+      <div
+        data-url="https://lumalabs.ai/dream-machine/creations"
+        onclick="navigateToUrl(this)"
+      >
+        <span
+          ><img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKGBpu76tkhG-9NW7yKpYC9SHGFoGyRvQmRg&s"
+        /></span>
+        <p>Luma DM</p>
+        <small>생성형 비디오</small>
+      </div>
+      <div data-url="https://lexica.art/" onclick="navigateToUrl(this)">
+        <span
+          ><img
+            src="https://cdn-1.webcatalog.io/catalog/lexica/lexica-icon-filled-256.webp?v=1714776715500"
+        /></span>
+        <p>Lexica</p>
+        <small>Community</small>
+      </div>
+      <div data-url="https://civitai.com/" onclick="navigateToUrl(this)">
+        <span
+          ><img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQWdA162vUoHRKf4LLwxU7NKDve3oY_7UnCg&s"
+        /></span>
+        <p>Civitai</p>
+        <small>Community</small>
+      </div>
+      <div
+        data-url="https://www.shakker.ai/ko/home"
+        onclick="navigateToUrl(this)"
+      >
+        <span
+          ><img
+            src="https://cdn-1.webcatalog.io/catalog/shakker-ai/shakker-ai-icon-filled-256.png?v=1724133892680"
+        /></span>
+        <p>Shakker</p>
+        <small>Community</small>
+      </div>
+      <div data-url="https://www.liblib.art/" onclick="navigateToUrl(this)">
+        <span
+          ><img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKrOCg3I9eeyqp_xz6MecCIgdwTaTfjFtarw&s"
+        /></span>
+        <p>LiblibAI</p>
+        <small>Community</small>
+      </div>
+      <div data-url="https://huggingface.co/" onclick="navigateToUrl(this)">
+        <span
+          ><img src="https://cdn.worldvectorlogo.com/logos/huggingface-2.svg"
+        /></span>
+        <p>Hugging Face</p>
+        <small>Resources</small>
+      </div>
     </section>
     <section class="bookmark">
-        <div class="title">
-            Torrents
-        </div>
-        <div data-url="https://torrentqq322.com/" onclick="navigateToUrl(this)">
-            <span><img src="https://torrentqq339.com/favicon.ico"></span>
-            <p>torrentqq</p>
-        </div>
-        <div data-url="https://torrentsee258.com/" onclick="navigateToUrl(this)">
-            <span><img src="https://torrentsee258.com/favicon.ico"></span>
-            <p>torrentsee</p>
-        </div>
-        <div data-url="https://bt4g.org/" onclick="navigateToUrl(this)">
-            <span><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAAAAAA6mKC9AAAAr0lEQVR4AU3OIQyDMBQE0D8vEHNIHHYO3WQGV6+m5hVekEzUizokDleBrqisboKqReB/bw0ZsJMvucsRrEpIjCMEXXYW6YJQ1X072VPoJZW2o17xI2pbOS7T38b7pha47QJTKRvM2QBtQvTRxwvwKXoTDfiEtX6K0cVDiGHKVm7zCmZOnAiMoa6EmyIyAYQsurg1fhh8HgsZkBC0LB9Nca9FR9gFiN7NLgI7gPm4wV+0DtHUd8v4dgAAAABJRU5ErkJggg=="></span>
-            <p>bt4g</p>
-        </div>
-        <div data-url="https://en.btdig.com/index.htm" onclick="navigateToUrl(this)">
-            <span><img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/BTDigg_logo.png"></span>
-            <p>btdig</p>
-        </div>
+      <div class="title">Design References</div>
+      <div data-url="https://dribbble.com/" onclick="navigateToUrl(this)">
+        <span
+          ><img
+            src="https://cdn.iconscout.com/icon/premium/png-256-thumb/dribbble-1867906-1580061.png?f=webp"
+        /></span>
+        <p>Dribbble</p>
+      </div>
+      <div data-url="https://www.behance.net/" onclick="navigateToUrl(this)">
+        <span
+          ><img
+            src="https://cdn.icon-icons.com/icons2/1584/PNG/512/3721681-behance_108059.png"
+        /></span>
+        <p>Behance</p>
+      </div>
+      <div data-url="https://kr.pinterest.com/" onclick="navigateToUrl(this)">
+        <span
+          ><img
+            src="https://cdn0.iconfinder.com/data/icons/Pinterest/512/Pinterest_Favicon.png"
+        /></span>
+        <p>Pinterest</p>
+      </div>
+      <div data-url="https://coolors.co/" onclick="navigateToUrl(this)">
+        <span
+          ><img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWrruHgtcMkZ38CIpyyTUIC7rsiu9Foxkb6Q&s"
+        /></span>
+        <p>Coolors</p>
+      </div>
+      <div data-url="https://www.khroma.co/" onclick="navigateToUrl(this)">
+        <span
+          ><img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrXbMRHswlNl6fs30SUV7VffGnHfw15-1snA&s"
+        /></span>
+        <p>Khroma</p>
+      </div>
+    </section>
+    <section class="bookmark">
+      <div class="title">Stock Contributors</div>
+      <div
+        data-url="https://contributor.stock.adobe.com/"
+        onclick="navigateToUrl(this)"
+      >
+        <span
+          ><img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwvlgleC97VBtyr_TLK2MUO7CnWylRJzkEpw&s"
+        /></span>
+        <p>Adobe Stock</p>
+      </div>
+      <div
+        data-url="https://submit.shutterstock.com/"
+        onclick="navigateToUrl(this)"
+      >
+        <span
+          ><img
+            src="https://submit.shutterstock.com/assets/images/Contributor_Favicon_32.png"
+        /></span>
+        <p>Shutterstock</p>
+      </div>
+      <div
+        data-url="https://esp.gettyimages.com/"
+        onclick="navigateToUrl(this)"
+      >
+        <span
+          ><img
+            src="https://cdn.iconscout.com/icon/free/png-256/free-gettyimages-461794.png"
+        /></span>
+        <p>Gettyimages</p>
+      </div>
+      <div data-url="https://www.iconfinder.com/" onclick="navigateToUrl(this)">
+        <span
+          ><img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZdJMD4bMIbDUxk5Vo0ua4L_lz6iCMCxESqQ&s"
+        /></span>
+        <p>Iconfinder</p>
+      </div>
+      <div data-url="https://creativemarket.com/" onclick="navigateToUrl(this)">
+        <span
+          ><img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSU0LHU1J8JWlTCXWB52S5MDuXm-7ajUoMxeQ&s"
+        /></span>
+        <p>Creative Market</p>
+      </div>
+      <div data-url="https://graphicriver.net/" onclick="navigateToUrl(this)">
+        <span
+          ><img
+            src="https://assets.market-storefront.envato-static.com/storefront/assets/og-images/graphicriver-3a7a4fb0c989f07658faec8a10d5aa5200f5742f371c38cbeb7f17b04a58bfff.png"
+        /></span>
+        <p>Graphicriver</p>
+      </div>
+    </section>
+    <section class="bookmark">
+      <div class="title">Projects</div>
+      <div data-url="https://spline.design/" onclick="navigateToUrl(this)">
+        <span
+          ><img
+            src="https://spline.design/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fspline_logo.647803e0.png&w=128&q=75"
+        /></span>
+        <p>Spline</p>
+      </div>
+      <div
+        data-url="https://editor.rive.app/home"
+        onclick="navigateToUrl(this)"
+      >
+        <span
+          ><img
+            src="https://framerusercontent.com/images/jMyKrhKKXqpc15qYqC3A0pZELw.png"
+        /></span>
+        <p>RIVE</p>
+      </div>
+      <div data-url="https://www.figma.com/" onclick="navigateToUrl(this)">
+        <span
+          ><img
+            src="https://cdn4.iconfinder.com/data/icons/logos-brands-in-colors/3000/figma-logo-512.png"
+        /></span>
+        <p>Figma</p>
+      </div>
+      <div data-url="https://replit.com/~" onclick="navigateToUrl(this)">
+        <span><img src="https://cdn.replit.com/dotcom/favicon-196.png" /></span>
+        <p>Replit</p>
+      </div>
+      <div
+        data-url="https://app.sketchup.com/app"
+        onclick="navigateToUrl(this)"
+      >
+        <span
+          ><img
+            src="https://sketchup.buildingpoint.co.nz/wp-content/uploads/2023/10/cropped-sketchup-icon.png"
+        /></span>
+        <p>SketchUp</p>
+      </div>
+      <div
+        data-url="https://3dwarehouse.sketchup.com/"
+        onclick="navigateToUrl(this)"
+      >
+        <span
+          ><img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX8_DjS2f9FhelTNPGCYNg1p7Gg_Tq6phVUA&s"
+        /></span>
+        <p>3D Warehouse</p>
+      </div>
+      <div
+        data-url="https://extensions.sketchup.com/"
+        onclick="navigateToUrl(this)"
+      >
+        <span
+          ><img
+            src="https://extensions.sketchup.com/assets/extensionwarehouselogo.22bbc3e4.svg"
+        /></span>
+        <p>Extension Warehouse</p>
+      </div>
+    </section>
+    <section class="bookmark">
+      <div class="title">Torrents</div>
+      <div data-url="https://torrentqq322.com/" onclick="navigateToUrl(this)">
+        <span><img src="https://torrentqq339.com/favicon.ico" /></span>
+        <p>torrentqq</p>
+      </div>
+      <div data-url="https://torrentsee258.com/" onclick="navigateToUrl(this)">
+        <span><img src="https://torrentsee258.com/favicon.ico" /></span>
+        <p>torrentsee</p>
+      </div>
+      <div data-url="https://bt4g.org/" onclick="navigateToUrl(this)">
+        <span
+          ><img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAAAAAA6mKC9AAAAr0lEQVR4AU3OIQyDMBQE0D8vEHNIHHYO3WQGV6+m5hVekEzUizokDleBrqisboKqReB/bw0ZsJMvucsRrEpIjCMEXXYW6YJQ1X072VPoJZW2o17xI2pbOS7T38b7pha47QJTKRvM2QBtQvTRxwvwKXoTDfiEtX6K0cVDiGHKVm7zCmZOnAiMoa6EmyIyAYQsurg1fhh8HgsZkBC0LB9Nca9FR9gFiN7NLgI7gPm4wV+0DtHUd8v4dgAAAABJRU5ErkJggg=="
+        /></span>
+        <p>bt4g</p>
+      </div>
+      <div
+        data-url="https://en.btdig.com/index.htm"
+        onclick="navigateToUrl(this)"
+      >
+        <span
+          ><img
+            src="https://upload.wikimedia.org/wikipedia/commons/3/3b/BTDigg_logo.png"
+        /></span>
+        <p>btdig</p>
+      </div>
     </section>
     <!-- Link -->
     <!-- Link -->
     <section class="link">
-        <div data-url="httpstat.us" color="red">HTTP codes</div>
-        <div data-url="https://developer.mozilla.org/ko/docs/Web/HTTP/Status" color="red">HTTP 상태 코드</div>
-        <div data-url="https://gsap.com/docs/v3/GSAP/" color="blue">GSAP</div>
-        <div data-url="https://dixonandmoe.com/rellax/" color="blue">Rellax</div>
-        <div data-url="https://lenis.darkroom.engineering/" color="blue">Lenis</div>
-        <div data-url="https://michalsnik.github.io/aos/" color="blue">AOS</div>
-        <div data-url="https://locomotivemtl.github.io/locomotive-scroll/" color="blue">Locomotive Scroll</div>
-        <div data-url="https://lottiefiles.com/kr/">Lottie</div>
-        <div data-url="https://cactus.tistory.com/306">Pretendard 폰트</div>
-        <div data-url="https://webstoryboy.co.kr/1910">GSAP 기초 한글강좌</div>
-        <div data-url="https://www.pexels.com/ko-kr/videos/">무료 비디오</div>
-        <div data-url="https://unsplash.com/ko">무료 사진</div>
-        <div data-url="https://nxbrew.com/">스위치 롬</div>
-        <div data-url="https://www.gamertw.com/ko">젤다 왕눈 맵</div>
-        <div data-url="https://www.zeldadungeon.net/breath-of-the-wild-interactive-map">젤다 야숨 맵</div>
-        <div data-url="https://pp.kepco.co.kr/rs/rs0202.do?menu_id=O020202">전기요금</div>
-        <div data-url="https://hosting.cafe24.com/">카페24 호스팅</div>
-        <div data-url="https://www.hosting.kr/">호스팅케이알</div>
-        <div data-url="https://korjpntranslate.blogspot.com/">자막</div>
-        <div data-url="https://myrient.erista.me/files/Internet%20Archive/chadmaster/chd_saturn/CHD-Saturn/Japan/">Saturn Roms</div>
-        <div data-url="https://romsfun.com/">Roms</div>
-        <div data-url="https://github.com/Abdess/retroarch_system">Retroarch</div>
-        <div data-url="https://github.com/ryujinx-mirror">Ryujinx mirror</div>
-        <div data-url="https://prodkeys.net/ryujinx-prod-keys-v2/">Ryujinx keys</div>
+      <div data-url="httpstat.us" color="red">HTTP codes</div>
+      <div
+        data-url="https://developer.mozilla.org/ko/docs/Web/HTTP/Status"
+        color="red"
+      >
+        HTTP 상태 코드
+      </div>
+      <div data-url="https://gsap.com/docs/v3/GSAP/" color="blue">GSAP</div>
+      <div data-url="https://dixonandmoe.com/rellax/" color="blue">Rellax</div>
+      <div data-url="https://lenis.darkroom.engineering/" color="blue">
+        Lenis
+      </div>
+      <div data-url="https://michalsnik.github.io/aos/" color="blue">AOS</div>
+      <div
+        data-url="https://locomotivemtl.github.io/locomotive-scroll/"
+        color="blue"
+      >
+        Locomotive Scroll
+      </div>
+      <div data-url="https://lottiefiles.com/kr/">Lottie</div>
+      <div data-url="https://cactus.tistory.com/306">Pretendard 폰트</div>
+      <div data-url="https://webstoryboy.co.kr/1910">GSAP 기초 한글강좌</div>
+      <div data-url="https://www.pexels.com/ko-kr/videos/">무료 비디오</div>
+      <div data-url="https://unsplash.com/ko">무료 사진</div>
+      <div data-url="https://nxbrew.com/">스위치 롬</div>
+      <div data-url="https://www.gamertw.com/ko">젤다 왕눈 맵</div>
+      <div
+        data-url="https://www.zeldadungeon.net/breath-of-the-wild-interactive-map"
+      >
+        젤다 야숨 맵
+      </div>
+      <div data-url="https://pp.kepco.co.kr/rs/rs0202.do?menu_id=O020202">
+        전기요금
+      </div>
+      <div data-url="https://hosting.cafe24.com/">카페24 호스팅</div>
+      <div data-url="https://www.hosting.kr/">호스팅케이알</div>
+      <div data-url="https://korjpntranslate.blogspot.com/">자막</div>
+      <div
+        data-url="https://myrient.erista.me/files/Internet%20Archive/chadmaster/chd_saturn/CHD-Saturn/Japan/"
+      >
+        Saturn Roms
+      </div>
+      <div data-url="https://romsfun.com/">Roms</div>
+      <div data-url="https://github.com/Abdess/retroarch_system">Retroarch</div>
+      <div data-url="https://github.com/ryujinx-mirror">Ryujinx mirror</div>
+      <div data-url="https://prodkeys.net/ryujinx-prod-keys-v2/">
+        Ryujinx keys
+      </div>
     </section>
     <script>
-        function navigateToUrl(divElement) {
-            const url = divElement.getAttribute("data-url");
-            window.open(url, "_self");
+      function navigateToUrl(divElement) {
+        const url = divElement.getAttribute("data-url");
+        window.open(url, "_self");
+      }
+
+      const iconCache = {}; // 아이콘 캐싱을 위한 객체
+
+      async function fetchIcon(url) {
+        if (iconCache[url]) {
+          return iconCache[url]; // 캐시된 아이콘이 있으면 반환
         }
-    
-        const iconCache = {}; // 아이콘 캐싱을 위한 객체
-    
-        async function fetchIcon(url) {
-            if (iconCache[url]) {
-                return iconCache[url]; // 캐시된 아이콘이 있으면 반환
-            }
-    
-            try {
-                // 아이콘 URL 가져오는 로직 (예: favicon URL을 가져오는 API 사용)
-                const response = await fetch(`https://www.google.com/s2/favicons?domain=${new URL(url).hostname}`);
-                
-                if (response.ok) {
-                    const iconUrl = response.url;
-                    iconCache[url] = iconUrl; // 가져온 아이콘을 캐시에 저장
-                    return iconUrl;
-                }
-            } catch (error) {
-                console.error("Icon fetch error:", error);
-                return null;
-            }
+
+        try {
+          // 아이콘 URL 가져오는 로직 (예: favicon URL을 가져오는 API 사용)
+          const response = await fetch(
+            `https://www.google.com/s2/favicons?domain=${new URL(url).hostname}`
+          );
+
+          if (response.ok) {
+            const iconUrl = response.url;
+            iconCache[url] = iconUrl; // 가져온 아이콘을 캐시에 저장
+            return iconUrl;
+          }
+        } catch (error) {
+          console.error("Icon fetch error:", error);
+          return null;
         }
-    
-        document.addEventListener('DOMContentLoaded', async function() {
-            const bookmarks = document.querySelectorAll('.bookmark[data-url]');
-    
-            // for...of 루프를 사용하여 비동기 처리 보장
-            for (const bookmark of bookmarks) {
-                const imgElement = bookmark.querySelector('img');
-                const dataUrl = bookmark.getAttribute('data-url');
-    
-                // 기본 이미지를 설정해 두고 fetchIcon 함수로 아이콘을 가져옴
-                imgElement.src = '/path/to/default_icon.png';
-    
-                const iconUrl = await fetchIcon(dataUrl);
-                if (iconUrl) {
-                    imgElement.src = iconUrl;
-                }
-            }
-        });
+      }
+
+      document.addEventListener("DOMContentLoaded", async function () {
+        const bookmarks = document.querySelectorAll(".bookmark[data-url]");
+
+        // for...of 루프를 사용하여 비동기 처리 보장
+        for (const bookmark of bookmarks) {
+          const imgElement = bookmark.querySelector("img");
+          const dataUrl = bookmark.getAttribute("data-url");
+
+          // 기본 이미지를 설정해 두고 fetchIcon 함수로 아이콘을 가져옴
+          imgElement.src = "/path/to/default_icon.png";
+
+          const iconUrl = await fetchIcon(dataUrl);
+          if (iconUrl) {
+            imgElement.src = iconUrl;
+          }
+        }
+      });
     </script>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // link 클래스를 가진 섹션을 모두 찾습니다
-            const linkSections = document.querySelectorAll("section.link");
+      document.addEventListener("DOMContentLoaded", function () {
+        // link 클래스를 가진 섹션을 모두 찾습니다
+        const linkSections = document.querySelectorAll("section.link");
 
-            linkSections.forEach(section => {
-                // 각 섹션 내의 모든 div 요소를 찾습니다
-                const divs = section.querySelectorAll("div");
+        linkSections.forEach((section) => {
+          // 각 섹션 내의 모든 div 요소를 찾습니다
+          const divs = section.querySelectorAll("div");
 
-                divs.forEach(div => {
-                    const url = div.getAttribute("data-url");
-                    // URL이 있는지 확인합니다
-                    if (url) {
-                        // div를 클릭 가능하게 만듭니다
-                        div.classList.add("clickable");
-                        div.onclick = function() {
-                            window.open(url, "_self");
-                        };
-                    }
-                });
-            });
+          divs.forEach((div) => {
+            const url = div.getAttribute("data-url");
+            // URL이 있는지 확인합니다
+            if (url) {
+              // div를 클릭 가능하게 만듭니다
+              div.classList.add("clickable");
+              div.onclick = function () {
+                window.open(url, "_self");
+              };
+            }
+          });
         });
+      });
     </script>
     <script>
-        // 페이지 로드 후 'name' 입력 필드에 커서 자동 이동
-        window.onload = function() {
-            document.getElementById("search").focus();
-        };
+      // 페이지 로드 후 'name' 입력 필드에 커서 자동 이동
+      window.onload = function () {
+        document.getElementById("search").focus();
+      };
     </script>
-</body>
+    <script>
+      function updateCountdown() {
+        // HTML의 data-d-day 속성에서 목표 날짜를 가져오기
+        const countdownElement = document.getElementById("countdown");
+        const targetDate = new Date(countdownElement.dataset.dDay);
+        const now = new Date();
 
+        // 현재 날짜와 목표 날짜의 차이를 계산
+        const timeDiff = targetDate - now;
+
+        if (timeDiff <= 0) {
+          countdownElement.textContent = "D-Day has arrived!";
+          clearInterval(interval); // 타이머 중지
+          return;
+        }
+
+        // 남은 날짜 계산
+        const days = Math.ceil(timeDiff / (1000 * 60 * 60 * 24)); // 올림으로 계산
+
+        // 화면에 표시
+        countdownElement.textContent = `${days}일 남음`;
+      }
+
+      // 1초마다 업데이트
+      const interval = setInterval(updateCountdown, 1000);
+
+      // 초기 호출
+      updateCountdown();
+    </script>
+  </body>
 </html>
