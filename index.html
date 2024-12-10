@@ -864,33 +864,36 @@
       };
     </script>
     <script>
-      function updateCountdown() {
-        // HTML의 data-d-day 속성에서 목표 날짜를 가져오기
-        const countdownElement = document.getElementById("countdown");
-        const targetDate = new Date(countdownElement.dataset.dDay);
-        const now = new Date();
+      function updateCountdowns() {
+        // 모든 .countdown 요소를 가져옴
+        const countdownElements = document.querySelectorAll(".countdown");
 
-        // 현재 날짜와 목표 날짜의 차이를 계산
-        const timeDiff = targetDate - now;
+        countdownElements.forEach((element) => {
+          // HTML의 data-d-day 속성에서 목표 날짜를 가져오기
+          const targetDate = new Date(element.dataset.dDay);
+          const now = new Date();
 
-        if (timeDiff <= 0) {
-          countdownElement.textContent = "D-Day has arrived!";
-          clearInterval(interval); // 타이머 중지
-          return;
-        }
+          // 현재 날짜와 목표 날짜의 차이를 계산
+          const timeDiff = targetDate - now;
 
-        // 남은 날짜 계산
-        const days = Math.ceil(timeDiff / (1000 * 60 * 60 * 24)); // 올림으로 계산
+          if (timeDiff <= 0) {
+            element.textContent = "D-Day has arrived!";
+            return;
+          }
 
-        // 화면에 표시
-        countdownElement.textContent = `${days}일 남음`;
+          // 남은 날짜 계산
+          const days = Math.ceil(timeDiff / (1000 * 60 * 60 * 24)); // 올림으로 계산
+
+          // 화면에 표시
+          element.textContent = `${days}일 남음`;
+        });
       }
 
       // 1초마다 업데이트
-      const interval = setInterval(updateCountdown, 1000);
+      setInterval(updateCountdowns, 1000);
 
       // 초기 호출
-      updateCountdown();
+      updateCountdowns();
     </script>
   </body>
 </html>
