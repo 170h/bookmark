@@ -213,6 +213,13 @@
         width: 20px;
         height: 20px;
       }
+      .count-container {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+      }
     </style>
   </head>
 
@@ -236,9 +243,15 @@
           </button>
         </div>
       </form>
-      <div>
-        <div id="countdown" data-d-day="2025-12-7">Loading...</div>
-        <small>Adobe Cloud</small>
+      <div class="count-container">
+        <div>
+          <div id="countdown" data-d-day="2025-3-6">Loading...</div>
+          <small>emagine.kr</small>
+        </div>
+        <div>
+          <div id="countdown" data-d-day="2025-12-7">Loading...</div>
+          <small>Adobe Cloud</small>
+        </div>
       </div>
     </section>
     <section class="bookmark">
