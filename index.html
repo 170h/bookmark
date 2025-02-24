@@ -972,7 +972,55 @@
       <div data-url="https://lucide.dev/icons/" color="blue">lucide Icons</div>
       <div data-url="https://www.careerhackeralex.com/">프롬프트 생성 참고</div>
     </section>
-    <script src="icon.js"></script>
+    <script>
+      function navigateToUrl(divElement) {
+        const url = divElement.getAttribute("data-url");
+        window.open(url, "_self");
+      }
+
+      const iconCache = {}; // 아이콘 캐싱을 위한 객체
+
+      async function fetchIcon(url) {
+        if (iconCache[url]) {
+          return iconCache[url]; // 캐시된 아이콘이 있으면 반환
+        }
+
+        try {
+          // 아이콘 URL 가져오는 로직 (예: favicon URL을 가져오는 API 사용)
+          const response = await fetch(
+            `https://www.google.com/s2/favicons?domain=${new URL(url).hostname}`
+          );
+
+          if (response.ok) {
+            const iconUrl = response.url;
+            iconCache[url] = iconUrl; // 가져온 아이콘을 캐시에 저장
+            return iconUrl;
+          }
+        } catch (error) {
+          console.error("Icon fetch error:", error);
+          return null;
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", async function () {
+        const bookmarks = document.querySelectorAll(".bookmark[data-url]");
+
+        // for...of 루프를 사용하여 비동기 처리 보장
+        for (const bookmark of bookmarks) {
+          const imgElement = bookmark.querySelector("img");
+          const dataUrl = bookmark.getAttribute("data-url");
+
+          // 기본 이미지를 설정해 두고 fetchIcon 함수로 아이콘을 가져옴
+          imgElement.src = "/path/to/default_icon.png";
+
+          const iconUrl = await fetchIcon(dataUrl);
+          if (iconUrl) {
+            imgElement.src = iconUrl;
+          }
+        }
+      });
+    </script>
+
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         // link 클래스를 가진 섹션을 모두 찾습니다
