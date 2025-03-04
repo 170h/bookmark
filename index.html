@@ -873,7 +873,7 @@
             const timeDiff = targetDate.getTime() - now.getTime();
 
             if (timeDiff <= 0) {
-              element.textContent = "D-Day has arrived!";
+              element.textContent = "D-Day!";
             } else {
               const days = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
               element.textContent = `${days}일 남음`;
@@ -894,7 +894,7 @@
               element.textContent = `기준일로부터 ${daysAfter}일이 지났습니다.`;
             } else {
               const days = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
-              element.textContent = `${days}일 남음 (기준일부터 ${daysAfter}일 후)`;
+              element.textContent = `${days}일 남음`;
             }
           }
         });
