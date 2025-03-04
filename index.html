@@ -43,8 +43,14 @@
           <small>Amazon Prime</small>
         </div> -->
         <div>
-          <div class="countdown" data-d-day="2025-3-6">Loading...</div>
-          <small>emagine.kr</small>
+          <div
+            class="countdown"
+            data-start-day="2025-03-05"
+            data-days-after="60"
+          >
+            Loading...
+          </div>
+          <small>emagine.kr SSL</small>
         </div>
         <div>
           <div class="countdown" data-d-day="2025-12-7">Loading...</div>
@@ -855,27 +861,42 @@
     </script>
     <script>
       function updateCountdowns() {
-        // 모든 .countdown 요소를 가져옴
         const countdownElements = document.querySelectorAll(".countdown");
 
         countdownElements.forEach((element) => {
-          // HTML의 data-d-day 속성에서 목표 날짜를 가져오기
-          const targetDate = new Date(element.dataset.dDay);
           const now = new Date();
 
-          // 현재 날짜와 목표 날짜의 차이를 계산
-          const timeDiff = targetDate - now;
+          // D-Day 계산
+          const dDay = element.dataset.dDay;
+          if (dDay) {
+            const targetDate = new Date(dDay);
+            const timeDiff = targetDate.getTime() - now.getTime();
 
-          if (timeDiff <= 0) {
-            element.textContent = "D-Day has arrived!";
-            return;
+            if (timeDiff <= 0) {
+              element.textContent = "D-Day has arrived!";
+            } else {
+              const days = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+              element.textContent = `${days}일 남음`;
+            }
           }
 
-          // 남은 날짜 계산
-          const days = Math.ceil(timeDiff / (1000 * 60 * 60 * 24)); // 올림으로 계산
+          // 기준일부터 몇일 후까지 계산
+          const startDay = element.dataset.startDay;
+          const daysAfter = element.dataset.daysAfter;
+          if (startDay && daysAfter) {
+            const startDate = new Date(startDay);
+            const targetDate = new Date(
+              startDate.setDate(startDate.getDate() + parseInt(daysAfter))
+            );
+            const timeDiff = targetDate.getTime() - now.getTime();
 
-          // 화면에 표시
-          element.textContent = `${days}일 남음`;
+            if (timeDiff <= 0) {
+              element.textContent = `기준일로부터 ${daysAfter}일이 지났습니다.`;
+            } else {
+              const days = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+              element.textContent = `${days}일 남음 (기준일부터 ${daysAfter}일 후)`;
+            }
+          }
         });
       }
 
