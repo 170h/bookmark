@@ -893,7 +893,7 @@
             if (timeDiff <= 0) {
               element.textContent = `기준일로부터 ${daysAfter}일이 지났습니다.`;
             } else {
-              const days = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+              const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24)); // 소수점을 내림 처리
               element.textContent = `${days}일 남음`;
             }
           }
