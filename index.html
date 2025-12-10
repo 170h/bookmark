@@ -1,1032 +1,701 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bookmark</title>
-    <link
-      href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/static/woff2/SUIT.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="shortcut icon"
-      href="https://cdn-icons-png.flaticon.com/512/786/786352.png"
-      type="image/x-icon"
-    />
-    <link rel="stylesheet" href="./index.css" />
-    <meta name="theme-color" content="#ffffff" />
-  </head>
 
-  <body>
-    <section class="search-container">
-      <form action="https://www.google.com/search" method="get" target="_blank">
-        <div class="search-box">
-          <input
-            type="text"
-            id="search"
-            name="q"
-            placeholder="Search Google"
-            required
-            autocomplete="on"
-          />
-          <button type="submit">
-            <img
-              src="https://cdn3.iconfinder.com/data/icons/feather-5/24/search-512.png"
-              alt="Search"
-            />
-          </button>
-        </div>
-      </form>
-      <div class="count-container">
-        <!-- <div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bookmark</title>
+  <link href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/static/woff2/SUIT.css" rel="stylesheet" />
+  <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/786/786352.png" type="image/x-icon" />
+  <link rel="stylesheet" href="./index.css" />
+  <meta name="theme-color" content="#ffffff" />
+</head>
+
+<body>
+  <section class="search-container">
+    <form action="https://www.google.com/search" method="get" target="_blank">
+      <div class="search-box">
+        <input type="text" id="search" name="q" placeholder="Search Google" required autocomplete="on" />
+        <button type="submit">
+          <img src="https://cdn3.iconfinder.com/data/icons/feather-5/24/search-512.png" alt="Search" />
+        </button>
+      </div>
+    </form>
+    <div class="count-container">
+      <!-- <div>
           <div class="countdown" data-d-day="2025-2-28">Loading...</div>
           <small>Amazon Prime</small>
         </div> -->
-        <div>
-          <div
-            class="countdown"
-            dDa="2026-01-13"
-          >
-            Loading...
-          </div>
-          <small>emagine.kr SSL</small>
+      <div>
+        <div class="countdown" data-d-day="2026-01-13">
+          Loading...
         </div>
-        <div>
-          <div class="countdown" data-start-day="2025-11-26"
-            data-days-after="365">Loading...</div>
-          <small>Adobe Cloud</small>
-        </div>
+        <small>emagine.kr SSL</small>
       </div>
-    </section>
+      <div>
+        <div class="countdown" data-start-day="2025-11-26" data-days-after="365">Loading...</div>
+        <small>Adobe Cloud</small>
+      </div>
+    </div>
+  </section>
 
-    <!-- Todo -->
+  <!-- Todo -->
 
-    <section class="bookmark">
-      <div class="title">Todo</div>
-      <div data-url="https://nomadcoders.co/" onclick="navigateToUrl(this)">
-        <span><img src="https://nomadcoders.co/m.svg" /></span>
-        <p>Nomadcoders</p>
-      </div>
-      <div data-url="https://www.udemy.com/" onclick="navigateToUrl(this)">
-        <span
-          ><img src="https://asset.brandfetch.io/idTqV2BNgX/iddwu7h7Fu.png"
-        /></span>
-        <p>Udemy</p>
-      </div>
-      <div data-url="https://www.fiverr.com/" onclick="navigateToUrl(this)">
-        <span
-          ><img
-            src="https://fiverr-res.cloudinary.com/npm-assets/layout-service/favicon-32x32.8f21439.png"
-        /></span>
-        <p>Fiverr</p>
-      </div>
-      <div
-        data-url="https://www.upwork.com/nx/find-work/best-matches"
-        onclick="navigateToUrl(this)"
-      >
-        <span><img src="https://www.upwork.com/favicon.ico" /></span>
-        <p>Upwork</p>
-      </div>
-      <div data-url="https://github.com/" onclick="navigateToUrl(this)">
-        <span
-          ><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
-        /></span>
-        <p>GitHub</p>
-      </div>
-      <div data-url="https://notebooklm.google.com/" onclick="navigateToUrl(this)">
-        <span
-          ><img src="https://notebooklm.google.com/_/static/branding/v5/light_mode/favicon/favicon.svg"
-        /></span>
-        <p>Notebook LM</p>
-      </div>
-    </section>
+  <section class="bookmark">
+    <div class="title">Todo</div>
+    <div data-url="https://nomadcoders.co/" onclick="navigateToUrl(this)">
+      <span><img src="https://nomadcoders.co/m.svg" /></span>
+      <p>Nomadcoders</p>
+    </div>
+    <div data-url="https://www.udemy.com/" onclick="navigateToUrl(this)">
+      <span><img src="https://asset.brandfetch.io/idTqV2BNgX/iddwu7h7Fu.png" /></span>
+      <p>Udemy</p>
+    </div>
+    <div data-url="https://www.fiverr.com/" onclick="navigateToUrl(this)">
+      <span><img src="https://fiverr-res.cloudinary.com/npm-assets/layout-service/favicon-32x32.8f21439.png" /></span>
+      <p>Fiverr</p>
+    </div>
+    <div data-url="https://www.upwork.com/nx/find-work/best-matches" onclick="navigateToUrl(this)">
+      <span><img src="https://www.upwork.com/favicon.ico" /></span>
+      <p>Upwork</p>
+    </div>
+    <div data-url="https://github.com/" onclick="navigateToUrl(this)">
+      <span><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" /></span>
+      <p>GitHub</p>
+    </div>
+    <div data-url="https://notebooklm.google.com/" onclick="navigateToUrl(this)">
+      <span><img src="https://notebooklm.google.com/_/static/branding/v5/light_mode/favicon/favicon.svg" /></span>
+      <p>Notebook LM</p>
+    </div>
+  </section>
 
-    <!-- Favorites -->
+  <!-- Favorites -->
 
-    <section class="bookmark">
-      <div class="title">Favorites</div>
-      <div
-        data-url="https://app.plex.tv/desktop/#!"
-        onclick="navigateToUrl(this)"
-      >
-        <span
-          ><img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSA2BCERhA04K0et8z9g8JRiss1RiVadSmohQ&s"
-        /></span>
-        <p>Plex</p>
-      </div>
-      <div data-url="https://play.coupang.com/" onclick="navigateToUrl(this)">
-        <span><img src="https://assets.coupangplay.com/favicon.ico" /></span>
-        <p>CoupangPlay</p>
-      </div>
-      <div data-url="https://www.youtube.com/" onclick="navigateToUrl(this)">
-        <span
-          ><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png"
-        /></span>
-        <p>Youtube</p>
-      </div>
-      <div data-url="https://mail.google.com/" onclick="navigateToUrl(this)">
-        <span
-          ><img
-            src="https://cdn.iconscout.com/icon/free/png-256/free-gmail-2981844-2476484.png"
-        /></span>
-        <p>Gmail</p>
-      </div>
-      <div
-        data-url="https://docs.google.com/spreadsheets/u/0/"
-        onclick="navigateToUrl(this)"
-      >
-        <span
-          ><img
-            src="https://www.gstatic.com/images/branding/product/2x/sheets_2020q4_48dp.png"
-        /></span>
-        <p>Google Sheets</p>
-      </div>
-      <div
-        data-url="https://admin.google.com/u/5/ac/home?hl=ko"
-        onclick="navigateToUrl(this)"
-      >
-        <span
-          ><img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoVNDLmmPypljHTtnfZx7efM1JEBPhq_NLbA&s"
-        /></span>
-        <p>Google Admin</p>
-      </div>
-      <div
-        data-url="https://analytics.google.com/analytics/web/?utm_source=OGB&utm_medium=app&authuser=0#/p376542918/reports/intelligenthome"
-        onclick="navigateToUrl(this)"
-      >
-        <span
-          ><img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQBxgGkG-plps8m75vkLW4z5_XWdI2Wwu9rw&s"
-        /></span>
-        <p>Google Analytics</p>
-      </div>
-      <div
-        data-url="https://drive.google.com/drive/u/5/home"
-        onclick="navigateToUrl(this)"
-      >
-        <span
-          ><img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3RaendkWxwbnlsA8UyDPmcDbqIMQETxKYpw&s"
-        /></span>
-        <p>Google Drive</p>
-      </div>
-      <div data-url="https://ocw.mit.edu/" onclick="navigateToUrl(this)">
-        <span
-          ><img src="https://avatars.githubusercontent.com/u/3009146?s=280&v=4"
-        /></span>
-        <p>MIT OCW</p>
-      </div>
-      <div data-url="https://www.ted.com/talks" onclick="navigateToUrl(this)">
-        <span
-          ><img
-            src="https://cdn.iconscout.com/icon/free/png-256/free-ted-5-282539.png"
-        /></span>
-        <p>TED Talks</p>
-      </div>
-    </section>
+  <section class="bookmark">
+    <div class="title">Favorites</div>
+    <div data-url="https://app.plex.tv/desktop/#!" onclick="navigateToUrl(this)">
+      <span><img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSA2BCERhA04K0et8z9g8JRiss1RiVadSmohQ&s" /></span>
+      <p>Plex</p>
+    </div>
+    <div data-url="https://play.coupang.com/" onclick="navigateToUrl(this)">
+      <span><img src="https://assets.coupangplay.com/favicon.ico" /></span>
+      <p>CoupangPlay</p>
+    </div>
+    <div data-url="https://www.youtube.com/" onclick="navigateToUrl(this)">
+      <span><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" /></span>
+      <p>Youtube</p>
+    </div>
+    <div data-url="https://mail.google.com/" onclick="navigateToUrl(this)">
+      <span><img src="https://cdn.iconscout.com/icon/free/png-256/free-gmail-2981844-2476484.png" /></span>
+      <p>Gmail</p>
+    </div>
+    <div data-url="https://docs.google.com/spreadsheets/u/0/" onclick="navigateToUrl(this)">
+      <span><img src="https://www.gstatic.com/images/branding/product/2x/sheets_2020q4_48dp.png" /></span>
+      <p>Google Sheets</p>
+    </div>
+    <div data-url="https://admin.google.com/u/5/ac/home?hl=ko" onclick="navigateToUrl(this)">
+      <span><img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoVNDLmmPypljHTtnfZx7efM1JEBPhq_NLbA&s" /></span>
+      <p>Google Admin</p>
+    </div>
+    <div
+      data-url="https://analytics.google.com/analytics/web/?utm_source=OGB&utm_medium=app&authuser=0#/p376542918/reports/intelligenthome"
+      onclick="navigateToUrl(this)">
+      <span><img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQBxgGkG-plps8m75vkLW4z5_XWdI2Wwu9rw&s" /></span>
+      <p>Google Analytics</p>
+    </div>
+    <div data-url="https://drive.google.com/drive/u/5/home" onclick="navigateToUrl(this)">
+      <span><img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3RaendkWxwbnlsA8UyDPmcDbqIMQETxKYpw&s" /></span>
+      <p>Google Drive</p>
+    </div>
+    <div data-url="https://ocw.mit.edu/" onclick="navigateToUrl(this)">
+      <span><img src="https://avatars.githubusercontent.com/u/3009146?s=280&v=4" /></span>
+      <p>MIT OCW</p>
+    </div>
+    <div data-url="https://www.ted.com/talks" onclick="navigateToUrl(this)">
+      <span><img src="https://cdn.iconscout.com/icon/free/png-256/free-ted-5-282539.png" /></span>
+      <p>TED Talks</p>
+    </div>
+  </section>
 
-    <!-- AI -->
-    <section class="bookmark">
-      <div class="title">AI</div>
-      <div
-        data-url="https://notebooklm.google.com/?authuser=1"
-        onclick="navigateToUrl(this)"
-      >
-        <span
-          ><img
-            src="https://notebooklm.google.com/_/static/branding/v5/light_mode/favicon/favicon.svg"
-        /></span>
-        <p>notebookLM</p>
-        <small>LLM</small>
-      </div>
-      <div
-        data-url="https://smithery.ai"
-        onclick="navigateToUrl(this)"
-      >
-        <span
-          ><img
-            src="https://smithery.ai/icon.svg?icon.2e4c651c.svg"
-        /></span>
-        <p>Smithery</p>
-        <small>MCP Server</small>
-      </div>
-      <div
-        data-url="https://aistudio.google.com/prompts/new_chat"
-        onclick="navigateToUrl(this)"
-      >
-        <span
-          ><img
-            src="https://wpforms.com/wp-content/uploads/2024/08/google-ai-studio-logo.png"
-        /></span>
-        <p>Google AI Studio</p>
-        <small>Nano Banana</small>
-      </div>
-      <div
-        data-url="https://console.cloud.google.com/vertex-ai/studio/multimodal?project=oval-precept-224716"
-        onclick="navigateToUrl(this)"
-      >
-        <span
-          ><img
-            src="https://ssl.gstatic.com/pantheon/images/favicon/default.png"
-        /></span>
-        <p>Vertex AI (emagine.code)</p>
-        <small>Agent</small>
-      </div>
-      <div
-        data-url="https://labs.google/experiments"
-        onclick="navigateToUrl(this)"
-      >
-        <span
-          ><img src="https://labs.google/assets/icons/favicon-48x48.png"
-        /></span>
-        <p>Google Labs</p>
-        <small>experiments</small>
-      </div>
-      <div
-        data-url="https://opal.withgoogle.com/?mode=canvas"
-        onclick="navigateToUrl(this)"
-      >
-        <span
-          ><img
-            src="https://www.gstatic.com/marketing-cms/assets/images/d9/02/e128911b499e9d8de33f9117beee/googleg-standard-color-120dp.png=s180"
-        /></span>
-        <p>Opal</p>
-        <small>Agent</small>
-      </div>
-      <div
-        data-url="https://labs.google/fx/ko/tools/image-fx"
-        onclick="navigateToUrl(this)"
-      >
-        <span
-          ><img src="https://labs.google/fx/icons/favicon/favicon.svg"
-        /></span>
-        <p>imageFX</p>
-        <small>생성형 이미지</small>
-      </div>
-      <div data-url="https://github.com/copilot" onclick="navigateToUrl(this)">
-        <span
-          ><img src="https://files.svgcdn.io/tabler/brand-github-copilot.svg"
-        /></span>
-        <p>Git Copilot</p>
-        <small>LLM</small>
-      </div>
-      <div
-        data-url="https://labs.google/fx/ko/tools/whisk"
-        onclick="navigateToUrl(this)"
-      >
-        <span
-          ><img src="https://labs.google/fx/icons/favicon/favicon.svg"
-        /></span>
-        <p>Whisk</p>
-        <small>생성형 이미지</small>
-      </div>
-      <div
-        data-url="https://claude.ai/login?returnTo=%2F%3F"
-        onclick="navigateToUrl(this)"
-      >
-        <span><img src="https://claude.ai/images/claude_app_icon.png" /></span>
-        <p>Claude</p>
-        <small>LLM</small>
-      </div>
-      <div data-url="https://chat.openai.com/" onclick="navigateToUrl(this)">
-        <span
-          ><img src="https://cdn.worldvectorlogo.com/logos/chatgpt-6.svg"
-        /></span>
-        <p>ChatGPT</p>
-        <small>LLM</small>
-      </div>
-      <div data-url="https://chat.lmsys.org/" onclick="navigateToUrl(this)">
-        <span
-          ><img
-            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAw1BMVEX////+9ez7tWv7u3H++PL7vYn5iAD5lAD5mQD7z5P8zrH5hQD5owD5qwD94rn94tP5iS35fQD8y5v8ypT5pQD6vTj+8dr6mmH5bAD6rWf6u135sAD5tQD60Wv7tY75cgD5dgD5kDT+8eT969H5tir5ugD5vwD84pb//fz5fBL5jgD7uXz84K/5xQD5xwD5zwv4YwD8waD5ngD8yaT82pb++uv5ni786q/7qYP5tAD7x4f734v723v856L83aD82KX7yonabGiaAAABMUlEQVR4AcWS1YICIRRAsQam1kWd7oBF7O74/69a7H72vp6bB8C3o1AslT+xigQRkt8iRZUgRJqm/7yg6i+WJKlWRw1dN8wHVLZsrGKnLMa6Dc/3g7vRoR3FcVIFIC0AkOUeofTvjFgkUFMR9SXIWwyANqGdbu8E034cRwMA5OEQIa6OABgL2J2c6EB0tad5ozFEkHM8zYmAs8tMNlcXvqc3loxVuFiIdFbstuyakoXX4BXAlg3dIx6eX+Gm06G+McWcQzRsNPKpHUe2cmJmt9shWwBGKkfDobYTp4n1+4XTxF63Q4mQVi5yuGRCZDOO7fjSd0Up8QzzJKH6G4uu4U3RJPDFQu5Bn4Mxtq3Hl8tyXddQrS7sYyHyOdoNTUMQSqoC3sUeIShVPn+TYhl8Of4BaxUezgKyWLEAAAAASUVORK5CYII="
-        /></span>
-        <p>LMSYS</p>
-        <small>LLM</small>
-      </div>
-      <div
-        data-url="https://gemini.google.com/app?hl=ko"
-        onclick="navigateToUrl(this)"
-      >
-        <span
-          ><img
-            src="https://www.gstatic.com/lamda/images/gemini_sparkle_v002_d4735304ff6292a690345.svg"
-        /></span>
-        <p>Gemini</p>
-        <small>LLM</small>
-      </div>
-      <div
-        data-url="https://copilot.microsoft.com/"
-        onclick="navigateToUrl(this)"
-      >
-        <span
-          ><img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjmJajFJdxJlZcy2iVli5r3CcFD6C2T1qQoA&s"
-        /></span>
-        <p>Copilot</p>
-        <small>LLM</small>
-      </div>
-      <div data-url="https://www.perplexity.ai/" onclick="navigateToUrl(this)">
-        <span
-          ><img
-            src="https://knowprose.com/wp-content/uploads/2024/04/turquoise402xperplexity.ai_.png"
-        /></span>
-        <p>Perplexity</p>
-        <small>LLM</small>
-      </div>
-      <div data-url="https://chat.deepseek.com/" onclick="navigateToUrl(this)">
-        <span
-          ><img
-            src="https://www.aig123.com/wp-content/uploads/2024/05/deepseek.png"
-        /></span>
-        <p>DeepSeek</p>
-        <small>LLM</small>
-      </div>
-      <div
-        data-url="https://huggingface.co/spaces/multimodalart/FLUX.1-merged"
-        onclick="navigateToUrl(this)"
-      >
-        <span
-          ><img
-            src="https://blackforestlabs.ai/wp-content/uploads/2024/07/bfl_logo_retraced_blk.png"
-        /></span>
-        <p>FLUX Merged</p>
-        <small>생성형 이미지</small>
-      </div>
-      <div
-        data-url="https://blackforestlabs.ai/#get-flux"
-        onclick="navigateToUrl(this)"
-      >
-        <span
-          ><img
-            src="https://blackforestlabs.ai/wp-content/uploads/2024/07/bfl_logo_retraced_blk.png"
-        /></span>
-        <p>FLUX</p>
-        <small>생성형 이미지</small>
-      </div>
-      <div
-        data-url="https://firefly.adobe.com/?ff_channel=adobe_com&ff_campaign=ffly_homepage&ff_source=firefly_seo"
-        onclick="navigateToUrl(this)"
-      >
-        <span
-          ><img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Adobe_Firefly_Logo.svg/2101px-Adobe_Firefly_Logo.svg.png"
-        /></span>
-        <p>Firefly</p>
-        <small>생성형 이미지</small>
-      </div>
-      <div
-        data-url="https://app.runwayml.com/video-tools/teams/2018620161/ai-tools/generative-video"
-        onclick="navigateToUrl(this)"
-      >
-        <span
-          ><img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwDMhyhLZOZQzGhqa5Y9i-8O2cpvxC3jPrrA&s"
-        /></span>
-        <p>Runway</p>
-        <small>생성형 이미지와 비디오</small>
-      </div>
-      <div
-        data-url="https://huggingface.co/spaces/shariqfarooq/ZoeDepth"
-        onclick="navigateToUrl(this)"
-      >
-        <span
-          ><img src="https://cdn.worldvectorlogo.com/logos/huggingface-2.svg"
-        /></span>
-        <p>ZoeDepth</p>
-        <small>3D 생성형 이미지</small>
-      </div>
-      <div
-        data-url="https://www.midjourney.com/home"
-        onclick="navigateToUrl(this)"
-      >
-        <span
-          ><img
-            src="https://upload.wikimedia.org/wikipedia/commons/e/e6/Midjourney_Emblem.png"
-        /></span>
-        <p>Midjourney</p>
-        <small>생성형 이미지와 비디오</small>
-      </div>
-      <div
-        data-url="https://lumalabs.ai/dream-machine/creations"
-        onclick="navigateToUrl(this)"
-      >
-        <span
-          ><img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKGBpu76tkhG-9NW7yKpYC9SHGFoGyRvQmRg&s"
-        /></span>
-        <p>Luma DM</p>
-        <small>생성형 비디오</small>
-      </div>
-      <div data-url="https://lexica.art/" onclick="navigateToUrl(this)">
-        <span
-          ><img
-            src="https://cdn-1.webcatalog.io/catalog/lexica/lexica-icon-filled-256.webp?v=1714776715500"
-        /></span>
-        <p>Lexica</p>
-        <small>Community</small>
-      </div>
-      <div data-url="https://civitai.com/" onclick="navigateToUrl(this)">
-        <span
-          ><img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQWdA162vUoHRKf4LLwxU7NKDve3oY_7UnCg&s"
-        /></span>
-        <p>Civitai</p>
-        <small>Community</small>
-      </div>
-      <div
-        data-url="https://www.shakker.ai/ko/home"
-        onclick="navigateToUrl(this)"
-      >
-        <span
-          ><img
-            src="https://cdn-1.webcatalog.io/catalog/shakker-ai/shakker-ai-icon-filled-256.png?v=1724133892680"
-        /></span>
-        <p>Shakker</p>
-        <small>Community</small>
-      </div>
-      <div data-url="https://www.liblib.art/" onclick="navigateToUrl(this)">
-        <span
-          ><img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKrOCg3I9eeyqp_xz6MecCIgdwTaTfjFtarw&s"
-        /></span>
-        <p>LiblibAI</p>
-        <small>Community</small>
-      </div>
-      <div data-url="https://huggingface.co/" onclick="navigateToUrl(this)">
-        <span
-          ><img src="https://cdn.worldvectorlogo.com/logos/huggingface-2.svg"
-        /></span>
-        <p>Hugging Face</p>
-        <small>Resources</small>
-      </div>
-      <div data-url="https://labs.google/fx/ko" onclick="navigateToUrl(this)">
-        <span
-          ><img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Google_Labs_Icon_%282023%29.svg/440px-Google_Labs_Icon_%282023%29.svg.png"
-        /></span>
-        <p>Google Labs FX</p>
-        <small>생성형 이미지와 비디오</small>
-      </div>
-    </section>
+  <!-- AI -->
+  <section class="bookmark">
+    <div class="title">AI</div>
+    <div data-url="https://notebooklm.google.com/?authuser=1" onclick="navigateToUrl(this)">
+      <span><img src="https://notebooklm.google.com/_/static/branding/v5/light_mode/favicon/favicon.svg" /></span>
+      <p>notebookLM</p>
+      <small>LLM</small>
+    </div>
+    <div data-url="https://smithery.ai" onclick="navigateToUrl(this)">
+      <span><img src="https://smithery.ai/icon.svg?icon.2e4c651c.svg" /></span>
+      <p>Smithery</p>
+      <small>MCP Server</small>
+    </div>
+    <div data-url="https://aistudio.google.com/prompts/new_chat" onclick="navigateToUrl(this)">
+      <span><img src="https://wpforms.com/wp-content/uploads/2024/08/google-ai-studio-logo.png" /></span>
+      <p>Google AI Studio</p>
+      <small>Nano Banana</small>
+    </div>
+    <div data-url="https://console.cloud.google.com/vertex-ai/studio/multimodal?project=oval-precept-224716"
+      onclick="navigateToUrl(this)">
+      <span><img src="https://ssl.gstatic.com/pantheon/images/favicon/default.png" /></span>
+      <p>Vertex AI (emagine.code)</p>
+      <small>Agent</small>
+    </div>
+    <div data-url="https://labs.google/experiments" onclick="navigateToUrl(this)">
+      <span><img src="https://labs.google/assets/icons/favicon-48x48.png" /></span>
+      <p>Google Labs</p>
+      <small>experiments</small>
+    </div>
+    <div data-url="https://opal.withgoogle.com/?mode=canvas" onclick="navigateToUrl(this)">
+      <span><img
+          src="https://www.gstatic.com/marketing-cms/assets/images/d9/02/e128911b499e9d8de33f9117beee/googleg-standard-color-120dp.png=s180" /></span>
+      <p>Opal</p>
+      <small>Agent</small>
+    </div>
+    <div data-url="https://labs.google/fx/ko/tools/image-fx" onclick="navigateToUrl(this)">
+      <span><img src="https://labs.google/fx/icons/favicon/favicon.svg" /></span>
+      <p>imageFX</p>
+      <small>생성형 이미지</small>
+    </div>
+    <div data-url="https://github.com/copilot" onclick="navigateToUrl(this)">
+      <span><img src="https://files.svgcdn.io/tabler/brand-github-copilot.svg" /></span>
+      <p>Git Copilot</p>
+      <small>LLM</small>
+    </div>
+    <div data-url="https://labs.google/fx/ko/tools/whisk" onclick="navigateToUrl(this)">
+      <span><img src="https://labs.google/fx/icons/favicon/favicon.svg" /></span>
+      <p>Whisk</p>
+      <small>생성형 이미지</small>
+    </div>
+    <div data-url="https://claude.ai/login?returnTo=%2F%3F" onclick="navigateToUrl(this)">
+      <span><img src="https://claude.ai/images/claude_app_icon.png" /></span>
+      <p>Claude</p>
+      <small>LLM</small>
+    </div>
+    <div data-url="https://chat.openai.com/" onclick="navigateToUrl(this)">
+      <span><img src="https://cdn.worldvectorlogo.com/logos/chatgpt-6.svg" /></span>
+      <p>ChatGPT</p>
+      <small>LLM</small>
+    </div>
+    <div data-url="https://chat.lmsys.org/" onclick="navigateToUrl(this)">
+      <span><img
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAw1BMVEX////+9ez7tWv7u3H++PL7vYn5iAD5lAD5mQD7z5P8zrH5hQD5owD5qwD94rn94tP5iS35fQD8y5v8ypT5pQD6vTj+8dr6mmH5bAD6rWf6u135sAD5tQD60Wv7tY75cgD5dgD5kDT+8eT969H5tir5ugD5vwD84pb//fz5fBL5jgD7uXz84K/5xQD5xwD5zwv4YwD8waD5ngD8yaT82pb++uv5ni786q/7qYP5tAD7x4f734v723v856L83aD82KX7yonabGiaAAABMUlEQVR4AcWS1YICIRRAsQam1kWd7oBF7O74/69a7H72vp6bB8C3o1AslT+xigQRkt8iRZUgRJqm/7yg6i+WJKlWRw1dN8wHVLZsrGKnLMa6Dc/3g7vRoR3FcVIFIC0AkOUeofTvjFgkUFMR9SXIWwyANqGdbu8E034cRwMA5OEQIa6OABgL2J2c6EB0tad5ozFEkHM8zYmAs8tMNlcXvqc3loxVuFiIdFbstuyakoXX4BXAlg3dIx6eX+Gm06G+McWcQzRsNPKpHUe2cmJmt9shWwBGKkfDobYTp4n1+4XTxF63Q4mQVi5yuGRCZDOO7fjSd0Up8QzzJKH6G4uu4U3RJPDFQu5Bn4Mxtq3Hl8tyXddQrS7sYyHyOdoNTUMQSqoC3sUeIShVPn+TYhl8Of4BaxUezgKyWLEAAAAASUVORK5CYII=" /></span>
+      <p>LMSYS</p>
+      <small>LLM</small>
+    </div>
+    <div data-url="https://gemini.google.com/app?hl=ko" onclick="navigateToUrl(this)">
+      <span><img src="https://www.gstatic.com/lamda/images/gemini_sparkle_v002_d4735304ff6292a690345.svg" /></span>
+      <p>Gemini</p>
+      <small>LLM</small>
+    </div>
+    <div data-url="https://copilot.microsoft.com/" onclick="navigateToUrl(this)">
+      <span><img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjmJajFJdxJlZcy2iVli5r3CcFD6C2T1qQoA&s" /></span>
+      <p>Copilot</p>
+      <small>LLM</small>
+    </div>
+    <div data-url="https://www.perplexity.ai/" onclick="navigateToUrl(this)">
+      <span><img src="https://knowprose.com/wp-content/uploads/2024/04/turquoise402xperplexity.ai_.png" /></span>
+      <p>Perplexity</p>
+      <small>LLM</small>
+    </div>
+    <div data-url="https://chat.deepseek.com/" onclick="navigateToUrl(this)">
+      <span><img src="https://www.aig123.com/wp-content/uploads/2024/05/deepseek.png" /></span>
+      <p>DeepSeek</p>
+      <small>LLM</small>
+    </div>
+    <div data-url="https://huggingface.co/spaces/multimodalart/FLUX.1-merged" onclick="navigateToUrl(this)">
+      <span><img src="https://blackforestlabs.ai/wp-content/uploads/2024/07/bfl_logo_retraced_blk.png" /></span>
+      <p>FLUX Merged</p>
+      <small>생성형 이미지</small>
+    </div>
+    <div data-url="https://blackforestlabs.ai/#get-flux" onclick="navigateToUrl(this)">
+      <span><img src="https://blackforestlabs.ai/wp-content/uploads/2024/07/bfl_logo_retraced_blk.png" /></span>
+      <p>FLUX</p>
+      <small>생성형 이미지</small>
+    </div>
+    <div data-url="https://firefly.adobe.com/?ff_channel=adobe_com&ff_campaign=ffly_homepage&ff_source=firefly_seo"
+      onclick="navigateToUrl(this)">
+      <span><img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Adobe_Firefly_Logo.svg/2101px-Adobe_Firefly_Logo.svg.png" /></span>
+      <p>Firefly</p>
+      <small>생성형 이미지</small>
+    </div>
+    <div data-url="https://app.runwayml.com/video-tools/teams/2018620161/ai-tools/generative-video"
+      onclick="navigateToUrl(this)">
+      <span><img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwDMhyhLZOZQzGhqa5Y9i-8O2cpvxC3jPrrA&s" /></span>
+      <p>Runway</p>
+      <small>생성형 이미지와 비디오</small>
+    </div>
+    <div data-url="https://huggingface.co/spaces/shariqfarooq/ZoeDepth" onclick="navigateToUrl(this)">
+      <span><img src="https://cdn.worldvectorlogo.com/logos/huggingface-2.svg" /></span>
+      <p>ZoeDepth</p>
+      <small>3D 생성형 이미지</small>
+    </div>
+    <div data-url="https://www.midjourney.com/home" onclick="navigateToUrl(this)">
+      <span><img src="https://upload.wikimedia.org/wikipedia/commons/e/e6/Midjourney_Emblem.png" /></span>
+      <p>Midjourney</p>
+      <small>생성형 이미지와 비디오</small>
+    </div>
+    <div data-url="https://lumalabs.ai/dream-machine/creations" onclick="navigateToUrl(this)">
+      <span><img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKGBpu76tkhG-9NW7yKpYC9SHGFoGyRvQmRg&s" /></span>
+      <p>Luma DM</p>
+      <small>생성형 비디오</small>
+    </div>
+    <div data-url="https://lexica.art/" onclick="navigateToUrl(this)">
+      <span><img src="https://cdn-1.webcatalog.io/catalog/lexica/lexica-icon-filled-256.webp?v=1714776715500" /></span>
+      <p>Lexica</p>
+      <small>Community</small>
+    </div>
+    <div data-url="https://civitai.com/" onclick="navigateToUrl(this)">
+      <span><img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQWdA162vUoHRKf4LLwxU7NKDve3oY_7UnCg&s" /></span>
+      <p>Civitai</p>
+      <small>Community</small>
+    </div>
+    <div data-url="https://www.shakker.ai/ko/home" onclick="navigateToUrl(this)">
+      <span><img
+          src="https://cdn-1.webcatalog.io/catalog/shakker-ai/shakker-ai-icon-filled-256.png?v=1724133892680" /></span>
+      <p>Shakker</p>
+      <small>Community</small>
+    </div>
+    <div data-url="https://www.liblib.art/" onclick="navigateToUrl(this)">
+      <span><img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKrOCg3I9eeyqp_xz6MecCIgdwTaTfjFtarw&s" /></span>
+      <p>LiblibAI</p>
+      <small>Community</small>
+    </div>
+    <div data-url="https://huggingface.co/" onclick="navigateToUrl(this)">
+      <span><img src="https://cdn.worldvectorlogo.com/logos/huggingface-2.svg" /></span>
+      <p>Hugging Face</p>
+      <small>Resources</small>
+    </div>
+    <div data-url="https://labs.google/fx/ko" onclick="navigateToUrl(this)">
+      <span><img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Google_Labs_Icon_%282023%29.svg/440px-Google_Labs_Icon_%282023%29.svg.png" /></span>
+      <p>Google Labs FX</p>
+      <small>생성형 이미지와 비디오</small>
+    </div>
+  </section>
 
-    <!-- Development -->
+  <!-- Development -->
 
-    <section class="bookmark">
-      <div class="title">Development</div>
-      <div data-url="https://ko.react.dev/" onclick="navigateToUrl(this)">
-        <span
-          ><img src="https://ko.legacy.reactjs.org/logo-180x180.png"
-        /></span>
-        <p>React</p>
-      </div>
-      <div
-        data-url="https://docs.python.org/ko/3.13/library/index.html"
-        onclick="navigateToUrl(this)"
-      >
-        <span
-          ><img src="https://cdn-icons-png.flaticon.com/512/5968/5968350.png"
-        /></span>
-        <p>Python Standard Library</p>
-      </div>
-      <div data-url="https://pypi.org/" onclick="navigateToUrl(this)">
-        <span
-          ><img
-            src="https://seeklogo.com/images/P/pypi-logo-5B953CE804-seeklogo.com.png"
-        /></span>
-        <p>Pypi</p>
-      </div>
-      <div
-        data-url="https://flask.palletsprojects.com/en/stable/"
-        onclick="navigateToUrl(this)"
-      >
-        <span
-          ><img
-            src="https://www.itnetwork.cz/images/5bcb45dcbfa76_image_0_thumb.svg"
-        /></span>
-        <p>Flask</p>
-      </div>
-      <div
-        data-url="https://docs.djangoproject.com/en/5.1/"
-        onclick="navigateToUrl(this)"
-      >
-        <span
-          ><img
-            src="https://goldeneagle.ai/static/images/technology/django.png"
-        /></span>
-        <p>Django</p>
-      </div>
-      <div
-        data-url="https://tailwindcss.com/docs/installation/using-vite"
-        onclick="navigateToUrl(this)"
-      >
-        <span
-          ><img src="https://tailwindcss.com/favicons/apple-touch-icon.png?v=4"
-        /></span>
-        <p>TailWind</p>
-      </div>
-      <div data-url="https://ui.shadcn.com/" onclick="navigateToUrl(this)">
-        <span><img src="https://ui.shadcn.com/apple-touch-icon.png" /></span>
-        <p>shadcn/ui</p>
-      </div>
-      <div data-url="https://hub.docker.com" onclick="navigateToUrl(this)">
-        <span><img src="https://hub.docker.com/favicon.ico" /></span>
-        <p>Docker Hub</p>
-      </div>
-      <div
-        data-url="https://docs.cursor.com/get-started/welcome"
-        onclick="navigateToUrl(this)"
-      >
-        <span
-          ><img
-            src="https://mintlify.s3-us-west-1.amazonaws.com/cursor/_generated/favicon/apple-touch-icon.png?v=3"
-        /></span>
-        <p>Cursor Docs</p>
-      </div>
-      <div
-        data-url="https://www.techonthenet.com/postgresql/index.php"
-        onclick="navigateToUrl(this)"
-      >
-        <span><img src="https://www.techonthenet.com/favicon.ico" /></span>
-        <p>Tech on the Net</p>
-      </div>
-    </section>
+  <section class="bookmark">
+    <div class="title">Development</div>
+    <div data-url="https://ko.react.dev/" onclick="navigateToUrl(this)">
+      <span><img src="https://ko.legacy.reactjs.org/logo-180x180.png" /></span>
+      <p>React</p>
+    </div>
+    <div data-url="https://docs.python.org/ko/3.13/library/index.html" onclick="navigateToUrl(this)">
+      <span><img src="https://cdn-icons-png.flaticon.com/512/5968/5968350.png" /></span>
+      <p>Python Standard Library</p>
+    </div>
+    <div data-url="https://pypi.org/" onclick="navigateToUrl(this)">
+      <span><img src="https://seeklogo.com/images/P/pypi-logo-5B953CE804-seeklogo.com.png" /></span>
+      <p>Pypi</p>
+    </div>
+    <div data-url="https://flask.palletsprojects.com/en/stable/" onclick="navigateToUrl(this)">
+      <span><img src="https://www.itnetwork.cz/images/5bcb45dcbfa76_image_0_thumb.svg" /></span>
+      <p>Flask</p>
+    </div>
+    <div data-url="https://docs.djangoproject.com/en/5.1/" onclick="navigateToUrl(this)">
+      <span><img src="https://goldeneagle.ai/static/images/technology/django.png" /></span>
+      <p>Django</p>
+    </div>
+    <div data-url="https://tailwindcss.com/docs/installation/using-vite" onclick="navigateToUrl(this)">
+      <span><img src="https://tailwindcss.com/favicons/apple-touch-icon.png?v=4" /></span>
+      <p>TailWind</p>
+    </div>
+    <div data-url="https://ui.shadcn.com/" onclick="navigateToUrl(this)">
+      <span><img src="https://ui.shadcn.com/apple-touch-icon.png" /></span>
+      <p>shadcn/ui</p>
+    </div>
+    <div data-url="https://hub.docker.com" onclick="navigateToUrl(this)">
+      <span><img src="https://hub.docker.com/favicon.ico" /></span>
+      <p>Docker Hub</p>
+    </div>
+    <div data-url="https://docs.cursor.com/get-started/welcome" onclick="navigateToUrl(this)">
+      <span><img
+          src="https://mintlify.s3-us-west-1.amazonaws.com/cursor/_generated/favicon/apple-touch-icon.png?v=3" /></span>
+      <p>Cursor Docs</p>
+    </div>
+    <div data-url="https://www.techonthenet.com/postgresql/index.php" onclick="navigateToUrl(this)">
+      <span><img src="https://www.techonthenet.com/favicon.ico" /></span>
+      <p>Tech on the Net</p>
+    </div>
+  </section>
 
-    <!-- Projects -->
+  <!-- Projects -->
 
-    <section class="bookmark">
-      <div class="title">Projects</div>
-      <div data-url="https://www.figma.com/" onclick="navigateToUrl(this)">
-        <span
-          ><img
-            src="https://cdn4.iconfinder.com/data/icons/logos-brands-in-colors/3000/figma-logo-512.png"
-        /></span>
-        <p>Figma</p>
-      </div>
-      <div data-url="https://spline.design/" onclick="navigateToUrl(this)">
-        <span
-          ><img
-            src="https://spline.design/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fspline_logo.647803e0.png&w=128&q=75"
-        /></span>
-        <p>Spline</p>
-      </div>
-      <div
-        data-url="https://editor.rive.app/home"
-        onclick="navigateToUrl(this)"
-      >
-        <span
-          ><img
-            src="https://framerusercontent.com/images/jMyKrhKKXqpc15qYqC3A0pZELw.png"
-        /></span>
-        <p>RIVE</p>
-      </div>
-      <div data-url="https://replit.com/~" onclick="navigateToUrl(this)">
-        <span><img src="https://cdn.replit.com/dotcom/favicon-196.png" /></span>
-        <p>Replit</p>
-      </div>
-      <div
-        data-url="https://app.sketchup.com/app"
-        onclick="navigateToUrl(this)"
-      >
-        <span
-          ><img
-            src="https://sketchup.buildingpoint.co.nz/wp-content/uploads/2023/10/cropped-sketchup-icon.png"
-        /></span>
-        <p>SketchUp</p>
-      </div>
-      <div
-        data-url="https://3dwarehouse.sketchup.com/"
-        onclick="navigateToUrl(this)"
-      >
-        <span
-          ><img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX8_DjS2f9FhelTNPGCYNg1p7Gg_Tq6phVUA&s"
-        /></span>
-        <p>3D Warehouse</p>
-      </div>
-      <div
-        data-url="https://extensions.sketchup.com/"
-        onclick="navigateToUrl(this)"
-      >
-        <span
-          ><img
-            src="https://extensions.sketchup.com/assets/extensionwarehouselogo.22bbc3e4.svg"
-        /></span>
-        <p>Extension Warehouse</p>
-      </div>
-      <div data-url="https://tools.rotato.app" onclick="navigateToUrl(this)">
-        <span
-          ><img src="https://tools.rotato.app/icon.png?6435b362e303172f"
-        /></span>
-        <p>Rotato Tools</p>
-      </div>
-    </section>
+  <section class="bookmark">
+    <div class="title">Projects</div>
+    <div data-url="https://www.figma.com/" onclick="navigateToUrl(this)">
+      <span><img src="https://cdn4.iconfinder.com/data/icons/logos-brands-in-colors/3000/figma-logo-512.png" /></span>
+      <p>Figma</p>
+    </div>
+    <div data-url="https://spline.design/" onclick="navigateToUrl(this)">
+      <span><img
+          src="https://spline.design/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fspline_logo.647803e0.png&w=128&q=75" /></span>
+      <p>Spline</p>
+    </div>
+    <div data-url="https://editor.rive.app/home" onclick="navigateToUrl(this)">
+      <span><img src="https://framerusercontent.com/images/jMyKrhKKXqpc15qYqC3A0pZELw.png" /></span>
+      <p>RIVE</p>
+    </div>
+    <div data-url="https://replit.com/~" onclick="navigateToUrl(this)">
+      <span><img src="https://cdn.replit.com/dotcom/favicon-196.png" /></span>
+      <p>Replit</p>
+    </div>
+    <div data-url="https://app.sketchup.com/app" onclick="navigateToUrl(this)">
+      <span><img
+          src="https://sketchup.buildingpoint.co.nz/wp-content/uploads/2023/10/cropped-sketchup-icon.png" /></span>
+      <p>SketchUp</p>
+    </div>
+    <div data-url="https://3dwarehouse.sketchup.com/" onclick="navigateToUrl(this)">
+      <span><img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX8_DjS2f9FhelTNPGCYNg1p7Gg_Tq6phVUA&s" /></span>
+      <p>3D Warehouse</p>
+    </div>
+    <div data-url="https://extensions.sketchup.com/" onclick="navigateToUrl(this)">
+      <span><img src="https://extensions.sketchup.com/assets/extensionwarehouselogo.22bbc3e4.svg" /></span>
+      <p>Extension Warehouse</p>
+    </div>
+    <div data-url="https://tools.rotato.app" onclick="navigateToUrl(this)">
+      <span><img src="https://tools.rotato.app/icon.png?6435b362e303172f" /></span>
+      <p>Rotato Tools</p>
+    </div>
+  </section>
 
-    <!-- Design References -->
+  <!-- Design References -->
 
-    <section class="bookmark">
-      <div class="title">Design References</div>
-      <div data-url="https://dribbble.com/" onclick="navigateToUrl(this)">
-        <span
-          ><img
-            src="https://cdn.iconscout.com/icon/premium/png-256-thumb/dribbble-1867906-1580061.png?f=webp"
-        /></span>
-        <p>Dribbble</p>
-      </div>
-      <div data-url="https://www.behance.net/" onclick="navigateToUrl(this)">
-        <span
-          ><img
-            src="https://a5.behance.net/07fc34e2004ebd03f6daaf3fd12b7661139dc759/img/site/favicon.png?cb=264615658"
-        /></span>
-        <p>Behance</p>
-      </div>
-      <div data-url="https://kr.pinterest.com/" onclick="navigateToUrl(this)">
-        <span
-          ><img
-            src="https://cdn0.iconfinder.com/data/icons/Pinterest/512/Pinterest_Favicon.png"
-        /></span>
-        <p>Pinterest</p>
-      </div>
-      <div
-        data-url="https://www.cgtrader.com/free-3d-models"
-        onclick="navigateToUrl(this)"
-      >
-        <span
-          ><img
-            src="https://assets.cgtrader.com/packs/media/images/cg_icon_rgb_small-a7304785.svg"
-        /></span>
-        <p>cgtrader</p>
-      </div>
-      <div data-url="https://coolors.co/" onclick="navigateToUrl(this)">
-        <span
-          ><img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWrruHgtcMkZ38CIpyyTUIC7rsiu9Foxkb6Q&s"
-        /></span>
-        <p>Coolors</p>
-      </div>
-      <div data-url="https://www.khroma.co/" onclick="navigateToUrl(this)">
-        <span
-          ><img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrXbMRHswlNl6fs30SUV7VffGnHfw15-1snA&s"
-        /></span>
-        <p>Khroma</p>
-      </div>
-      <div data-url="https://coolors.co/" onclick="navigateToUrl(this)">
-        <span
-          ><img src="https://coolors.co/assets/img/menu_icon_generate.svg"
-        /></span>
-        <p>Coolors</p>
-      </div>
-      <div data-url="https://colorhunt.co/" onclick="navigateToUrl(this)">
-        <span
-          ><img src="https://colorhunt.co/img/colorhunt-favicon.svg?2"
-        /></span>
-        <p>Color Hunt</p>
-      </div>
-      <div data-url="https://color.adobe.com/" onclick="navigateToUrl(this)">
-        <span><img src="https://color.adobe.com/apple-touch-icon.png" /></span>
-        <p>Adobe Color</p>
-      </div>
-      <div data-url="https://colors.muz.li/" onclick="navigateToUrl(this)">
-        <span
-          ><img src="https://colors.muz.li/assets/images/favicon.png"
-        /></span>
-        <p>Muzli Colors</p>
-      </div>
-      <div data-url="http://colormind.io/" onclick="navigateToUrl(this)">
-        <span
-          ><img
-            src="https://lh3.googleusercontent.com/proxy/IXjD0gXTBnI603VCezzvR2RvdTSLjrr2zc-SRPjnuK3KvrxUKMvLoA6M438jVV7PO1Rp"
-        /></span>
-        <p>Colormind</p>
-      </div>
-      <div
-        data-url="https://www.canva.com/colors/"
-        onclick="navigateToUrl(this)"
-      >
-        <span
-          ><img src="https://static.canva.com/static/images/favicon-1.ico"
-        /></span>
-        <p>Canva Colors</p>
-      </div>
-      <div data-url="https://picular.co/" onclick="navigateToUrl(this)">
-        <span><img src="https://picular.co/apple-touch-icon.png" /></span>
-        <p>Picular</p>
-      </div>
-      <div
-        data-url="https://www.untitledui.com/free-icons"
-        onclick="navigateToUrl(this)"
-      >
-        <span
-          ><img
-            src="https://cdn.prod.website-files.com/636496d3f0ebfdaba9784655/67088485a5dd10fa877ae7db_favicon-256px.png"
-        /></span>
-        <p>Untitled UI</p>
-      </div>
-    </section>
+  <section class="bookmark">
+    <div class="title">Design References</div>
+    <div data-url="https://dribbble.com/" onclick="navigateToUrl(this)">
+      <span><img
+          src="https://cdn.iconscout.com/icon/premium/png-256-thumb/dribbble-1867906-1580061.png?f=webp" /></span>
+      <p>Dribbble</p>
+    </div>
+    <div data-url="https://www.behance.net/" onclick="navigateToUrl(this)">
+      <span><img
+          src="https://a5.behance.net/07fc34e2004ebd03f6daaf3fd12b7661139dc759/img/site/favicon.png?cb=264615658" /></span>
+      <p>Behance</p>
+    </div>
+    <div data-url="https://kr.pinterest.com/" onclick="navigateToUrl(this)">
+      <span><img src="https://cdn0.iconfinder.com/data/icons/Pinterest/512/Pinterest_Favicon.png" /></span>
+      <p>Pinterest</p>
+    </div>
+    <div data-url="https://www.cgtrader.com/free-3d-models" onclick="navigateToUrl(this)">
+      <span><img src="https://assets.cgtrader.com/packs/media/images/cg_icon_rgb_small-a7304785.svg" /></span>
+      <p>cgtrader</p>
+    </div>
+    <div data-url="https://coolors.co/" onclick="navigateToUrl(this)">
+      <span><img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWrruHgtcMkZ38CIpyyTUIC7rsiu9Foxkb6Q&s" /></span>
+      <p>Coolors</p>
+    </div>
+    <div data-url="https://www.khroma.co/" onclick="navigateToUrl(this)">
+      <span><img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrXbMRHswlNl6fs30SUV7VffGnHfw15-1snA&s" /></span>
+      <p>Khroma</p>
+    </div>
+    <div data-url="https://coolors.co/" onclick="navigateToUrl(this)">
+      <span><img src="https://coolors.co/assets/img/menu_icon_generate.svg" /></span>
+      <p>Coolors</p>
+    </div>
+    <div data-url="https://colorhunt.co/" onclick="navigateToUrl(this)">
+      <span><img src="https://colorhunt.co/img/colorhunt-favicon.svg?2" /></span>
+      <p>Color Hunt</p>
+    </div>
+    <div data-url="https://color.adobe.com/" onclick="navigateToUrl(this)">
+      <span><img src="https://color.adobe.com/apple-touch-icon.png" /></span>
+      <p>Adobe Color</p>
+    </div>
+    <div data-url="https://colors.muz.li/" onclick="navigateToUrl(this)">
+      <span><img src="https://colors.muz.li/assets/images/favicon.png" /></span>
+      <p>Muzli Colors</p>
+    </div>
+    <div data-url="http://colormind.io/" onclick="navigateToUrl(this)">
+      <span><img
+          src="https://lh3.googleusercontent.com/proxy/IXjD0gXTBnI603VCezzvR2RvdTSLjrr2zc-SRPjnuK3KvrxUKMvLoA6M438jVV7PO1Rp" /></span>
+      <p>Colormind</p>
+    </div>
+    <div data-url="https://www.canva.com/colors/" onclick="navigateToUrl(this)">
+      <span><img src="https://static.canva.com/static/images/favicon-1.ico" /></span>
+      <p>Canva Colors</p>
+    </div>
+    <div data-url="https://picular.co/" onclick="navigateToUrl(this)">
+      <span><img src="https://picular.co/apple-touch-icon.png" /></span>
+      <p>Picular</p>
+    </div>
+    <div data-url="https://www.untitledui.com/free-icons" onclick="navigateToUrl(this)">
+      <span><img
+          src="https://cdn.prod.website-files.com/636496d3f0ebfdaba9784655/67088485a5dd10fa877ae7db_favicon-256px.png" /></span>
+      <p>Untitled UI</p>
+    </div>
+  </section>
 
-    <!-- Stock Contributors -->
+  <!-- Stock Contributors -->
 
-    <section class="bookmark">
-      <div class="title">Stock Contributors</div>
-      <div
-        data-url="https://contributor.stock.adobe.com/"
-        onclick="navigateToUrl(this)"
-      >
-        <span
-          ><img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwvlgleC97VBtyr_TLK2MUO7CnWylRJzkEpw&s"
-        /></span>
-        <p>Adobe Stock</p>
-      </div>
-      <div
-        data-url="https://submit.shutterstock.com/"
-        onclick="navigateToUrl(this)"
-      >
-        <span
-          ><img
-            src="https://submit.shutterstock.com/assets/images/Contributor_Favicon_32.png"
-        /></span>
-        <p>Shutterstock</p>
-      </div>
-      <div
-        data-url="https://esp.gettyimages.com/"
-        onclick="navigateToUrl(this)"
-      >
-        <span
-          ><img
-            src="https://cdn.iconscout.com/icon/free/png-256/free-gettyimages-461794.png"
-        /></span>
-        <p>Gettyimages</p>
-      </div>
-      <div data-url="https://www.iconfinder.com/" onclick="navigateToUrl(this)">
-        <span
-          ><img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZdJMD4bMIbDUxk5Vo0ua4L_lz6iCMCxESqQ&s"
-        /></span>
-        <p>Iconfinder</p>
-      </div>
-      <div data-url="https://creativemarket.com/" onclick="navigateToUrl(this)">
-        <span
-          ><img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSU0LHU1J8JWlTCXWB52S5MDuXm-7ajUoMxeQ&s"
-        /></span>
-        <p>Creative Market</p>
-      </div>
-      <div data-url="https://graphicriver.net/" onclick="navigateToUrl(this)">
-        <span
-          ><img
-            src="https://assets.market-storefront.envato-static.com/storefront/assets/og-images/graphicriver-3a7a4fb0c989f07658faec8a10d5aa5200f5742f371c38cbeb7f17b04a58bfff.png"
-        /></span>
-        <p>Graphicriver</p>
-      </div>
-    </section>
+  <section class="bookmark">
+    <div class="title">Stock Contributors</div>
+    <div data-url="https://contributor.stock.adobe.com/" onclick="navigateToUrl(this)">
+      <span><img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwvlgleC97VBtyr_TLK2MUO7CnWylRJzkEpw&s" /></span>
+      <p>Adobe Stock</p>
+    </div>
+    <div data-url="https://submit.shutterstock.com/" onclick="navigateToUrl(this)">
+      <span><img src="https://submit.shutterstock.com/assets/images/Contributor_Favicon_32.png" /></span>
+      <p>Shutterstock</p>
+    </div>
+    <div data-url="https://esp.gettyimages.com/" onclick="navigateToUrl(this)">
+      <span><img src="https://cdn.iconscout.com/icon/free/png-256/free-gettyimages-461794.png" /></span>
+      <p>Gettyimages</p>
+    </div>
+    <div data-url="https://www.iconfinder.com/" onclick="navigateToUrl(this)">
+      <span><img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZdJMD4bMIbDUxk5Vo0ua4L_lz6iCMCxESqQ&s" /></span>
+      <p>Iconfinder</p>
+    </div>
+    <div data-url="https://creativemarket.com/" onclick="navigateToUrl(this)">
+      <span><img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSU0LHU1J8JWlTCXWB52S5MDuXm-7ajUoMxeQ&s" /></span>
+      <p>Creative Market</p>
+    </div>
+    <div data-url="https://graphicriver.net/" onclick="navigateToUrl(this)">
+      <span><img
+          src="https://assets.market-storefront.envato-static.com/storefront/assets/og-images/graphicriver-3a7a4fb0c989f07658faec8a10d5aa5200f5742f371c38cbeb7f17b04a58bfff.png" /></span>
+      <p>Graphicriver</p>
+    </div>
+  </section>
 
-    <!-- Torrents -->
+  <!-- Torrents -->
 
-    <section class="bookmark">
-      <div class="title">Torrents</div>
-      <div data-url="https://torrentqq361.com/" onclick="navigateToUrl(this)">
-        <span><img src="https://torrentqq361.com/favicon.ico" /></span>
-        <p>torrentqq</p>
-      </div>
-      <div data-url="https://torrentsee308.com/" onclick="navigateToUrl(this)">
-        <span><img src="https://torrentsee308.com/favicon.ico" /></span>
-        <p>torrentsee</p>
-      </div>
-      <div data-url="https://bt4g.org/" onclick="navigateToUrl(this)">
-        <span
-          ><img
-            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAAAAAA6mKC9AAAAr0lEQVR4AU3OIQyDMBQE0D8vEHNIHHYO3WQGV6+m5hVekEzUizokDleBrqisboKqReB/bw0ZsJMvucsRrEpIjCMEXXYW6YJQ1X072VPoJZW2o17xI2pbOS7T38b7pha47QJTKRvM2QBtQvTRxwvwKXoTDfiEtX6K0cVDiGHKVm7zCmZOnAiMoa6EmyIyAYQsurg1fhh8HgsZkBC0LB9Nca9FR9gFiN7NLgI7gPm4wV+0DtHUd8v4dgAAAABJRU5ErkJggg=="
-        /></span>
-        <p>bt4g</p>
-      </div>
-      <div
-        data-url="https://en.btdig.com/index.htm"
-        onclick="navigateToUrl(this)"
-      >
-        <span
-          ><img
-            src="https://upload.wikimedia.org/wikipedia/commons/3/3b/BTDigg_logo.png"
-        /></span>
-        <p>btdig</p>
-      </div>
-    </section>
+  <section class="bookmark">
+    <div class="title">Torrents</div>
+    <div data-url="https://torrentqq361.com/" onclick="navigateToUrl(this)">
+      <span><img src="https://torrentqq361.com/favicon.ico" /></span>
+      <p>torrentqq</p>
+    </div>
+    <div data-url="https://torrentsee308.com/" onclick="navigateToUrl(this)">
+      <span><img src="https://torrentsee308.com/favicon.ico" /></span>
+      <p>torrentsee</p>
+    </div>
+    <div data-url="https://bt4g.org/" onclick="navigateToUrl(this)">
+      <span><img
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAAAAAA6mKC9AAAAr0lEQVR4AU3OIQyDMBQE0D8vEHNIHHYO3WQGV6+m5hVekEzUizokDleBrqisboKqReB/bw0ZsJMvucsRrEpIjCMEXXYW6YJQ1X072VPoJZW2o17xI2pbOS7T38b7pha47QJTKRvM2QBtQvTRxwvwKXoTDfiEtX6K0cVDiGHKVm7zCmZOnAiMoa6EmyIyAYQsurg1fhh8HgsZkBC0LB9Nca9FR9gFiN7NLgI7gPm4wV+0DtHUd8v4dgAAAABJRU5ErkJggg==" /></span>
+      <p>bt4g</p>
+    </div>
+    <div data-url="https://en.btdig.com/index.htm" onclick="navigateToUrl(this)">
+      <span><img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/BTDigg_logo.png" /></span>
+      <p>btdig</p>
+    </div>
+  </section>
 
-    <!-- links -->
+  <!-- links -->
 
-    <section class="link">
-      <div data-url="httpstat.us" color="red">HTTP codes</div>
-      <div
-        data-url="https://developer.mozilla.org/ko/docs/Web/HTTP/Status"
-        color="red"
-      >
-        HTTP 상태 코드
-      </div>
-      <div data-url="https://gsap.com/docs/v3/GSAP/" color="blue">GSAP</div>
-      <div data-url="https://dixonandmoe.com/rellax/" color="blue">Rellax</div>
-      <div data-url="https://lenis.darkroom.engineering/" color="blue">
-        Lenis
-      </div>
-      <div data-url="https://michalsnik.github.io/aos/" color="blue">AOS</div>
-      <div
-        data-url="https://locomotivemtl.github.io/locomotive-scroll/"
-        color="blue"
-      >
-        Locomotive Scroll
-      </div>
-      <div data-url="https://lottiefiles.com/kr/">Lottie</div>
-      <div data-url="https://cactus.tistory.com/306">Pretendard 폰트</div>
-      <div data-url="https://webstoryboy.co.kr/1910">GSAP 기초 한글강좌</div>
-      <div data-url="https://www.pexels.com/ko-kr/videos/">무료 비디오</div>
-      <div data-url="https://unsplash.com/ko">무료 사진</div>
-      <div data-url="https://switchrom.net/">스위치 롬</div>
-      <div data-url="https://git.ryujinx.app/ryubing/ryujinx/-/releases">
-        스위치 에뮬
-      </div>
-      <div data-url="https://prodkeys.net/latest-switch-firmwares-v11/">
-        Firmware & Key
-      </div>
-      <div data-url="https://www.gamertw.com/ko">젤다 왕눈 맵</div>
-      <div
-        data-url="https://www.zeldadungeon.net/breath-of-the-wild-interactive-map"
-      >
-        젤다 야숨 맵
-      </div>
-      <div data-url="https://pp.kepco.co.kr/rs/rs0202.do?menu_id=O020202">
-        전기요금
-      </div>
-      <div data-url="https://hosting.cafe24.com/">카페24 호스팅</div>
-      <div data-url="https://www.hosting.kr/">호스팅케이알</div>
-      <div data-url="https://korjpntranslate.blogspot.com/">애니자막</div>
-      <div
-        data-url="https://myrient.erista.me/files/Internet%20Archive/chadmaster/chd_saturn/CHD-Saturn/Japan/"
-      >
-        Saturn Roms
-      </div>
-      <div data-url="https://romsfun.com/">Roms</div>
-      <div data-url="https://github.com/Abdess/retroarch_system">Retroarch</div>
-      <div data-url="https://github.com/ryujinx-mirror/ryujinx/releases/">
-        Ryujinx mirror
-      </div>
-      <div data-url="https://prodkeys.net/ryujinx-prod-keys-v2/">
-        Ryujinx keys
-      </div>
-      <div data-url="https://www.eshare.go.kr/UserPortal/Upm/Main/index.do">
-        공유누리
-      </div>
-      <div data-url="https://subdl.com/">자막</div>
-      <div data-url="https://subtitlecat.com/">Subtitle Cat</div>
-      <div data-url="https://www.kpopflac.xyz/">Kpop Flac</div>
-      <div data-url="https://huggingface.co/spaces/aadnk/faster-whisper-webui">
-        Whisper AI WebUI
-      </div>
-      <div data-url="https://feathericons.com/" color="blue">Feather Icons</div>
-      <div data-url="https://heroicons.com/" color="blue">Heroicons</div>
-      <div
-        data-url="https://www.svgrepo.com/collection/dazzle-line-icons/"
-        color="blue"
-      >
-        SVG Repo
-      </div>
-      <div data-url="https://lucide.dev/icons/" color="blue">lucide Icons</div>
-      <div data-url="https://www.careerhackeralex.com/">프롬프트 생성 참고</div>
-      <div data-url="https://codesandbox.io/dashboard/recent">CodeSandbox</div>
-      <div data-url="https://animista.net/">Animista</div>
-      <div data-url="https://www.vitsoe.com/rw/606">Layout #1</div>
-      <div data-url="https://www.ls.graphics/free-mockups">Free Mockup</div>
-      <div data-url="https://unblast.com/">Default Mockup</div>
-      <div
-        data-url="https://www.sonduckfilm.com/tutorials/duck-pack/?campaign=FreeDuckPack&ref=1"
-      >
-        100 Free AE & PR Templates
-      </div>
-    </section>
-    <script>
-      function navigateToUrl(divElement) {
-        const url = divElement.getAttribute("data-url");
-        window.open(url, "_self");
+  <section class="link">
+    <div data-url="httpstat.us" color="red">HTTP codes</div>
+    <div data-url="https://developer.mozilla.org/ko/docs/Web/HTTP/Status" color="red">
+      HTTP 상태 코드
+    </div>
+    <div data-url="https://gsap.com/docs/v3/GSAP/" color="blue">GSAP</div>
+    <div data-url="https://dixonandmoe.com/rellax/" color="blue">Rellax</div>
+    <div data-url="https://lenis.darkroom.engineering/" color="blue">
+      Lenis
+    </div>
+    <div data-url="https://michalsnik.github.io/aos/" color="blue">AOS</div>
+    <div data-url="https://locomotivemtl.github.io/locomotive-scroll/" color="blue">
+      Locomotive Scroll
+    </div>
+    <div data-url="https://lottiefiles.com/kr/">Lottie</div>
+    <div data-url="https://cactus.tistory.com/306">Pretendard 폰트</div>
+    <div data-url="https://webstoryboy.co.kr/1910">GSAP 기초 한글강좌</div>
+    <div data-url="https://www.pexels.com/ko-kr/videos/">무료 비디오</div>
+    <div data-url="https://unsplash.com/ko">무료 사진</div>
+    <div data-url="https://switchrom.net/">스위치 롬</div>
+    <div data-url="https://git.ryujinx.app/ryubing/ryujinx/-/releases">
+      스위치 에뮬
+    </div>
+    <div data-url="https://prodkeys.net/latest-switch-firmwares-v11/">
+      Firmware & Key
+    </div>
+    <div data-url="https://www.gamertw.com/ko">젤다 왕눈 맵</div>
+    <div data-url="https://www.zeldadungeon.net/breath-of-the-wild-interactive-map">
+      젤다 야숨 맵
+    </div>
+    <div data-url="https://pp.kepco.co.kr/rs/rs0202.do?menu_id=O020202">
+      전기요금
+    </div>
+    <div data-url="https://hosting.cafe24.com/">카페24 호스팅</div>
+    <div data-url="https://www.hosting.kr/">호스팅케이알</div>
+    <div data-url="https://korjpntranslate.blogspot.com/">애니자막</div>
+    <div data-url="https://myrient.erista.me/files/Internet%20Archive/chadmaster/chd_saturn/CHD-Saturn/Japan/">
+      Saturn Roms
+    </div>
+    <div data-url="https://romsfun.com/">Roms</div>
+    <div data-url="https://github.com/Abdess/retroarch_system">Retroarch</div>
+    <div data-url="https://github.com/ryujinx-mirror/ryujinx/releases/">
+      Ryujinx mirror
+    </div>
+    <div data-url="https://prodkeys.net/ryujinx-prod-keys-v2/">
+      Ryujinx keys
+    </div>
+    <div data-url="https://www.eshare.go.kr/UserPortal/Upm/Main/index.do">
+      공유누리
+    </div>
+    <div data-url="https://subdl.com/">자막</div>
+    <div data-url="https://subtitlecat.com/">Subtitle Cat</div>
+    <div data-url="https://www.kpopflac.xyz/">Kpop Flac</div>
+    <div data-url="https://huggingface.co/spaces/aadnk/faster-whisper-webui">
+      Whisper AI WebUI
+    </div>
+    <div data-url="https://feathericons.com/" color="blue">Feather Icons</div>
+    <div data-url="https://heroicons.com/" color="blue">Heroicons</div>
+    <div data-url="https://www.svgrepo.com/collection/dazzle-line-icons/" color="blue">
+      SVG Repo
+    </div>
+    <div data-url="https://lucide.dev/icons/" color="blue">lucide Icons</div>
+    <div data-url="https://www.careerhackeralex.com/">프롬프트 생성 참고</div>
+    <div data-url="https://codesandbox.io/dashboard/recent">CodeSandbox</div>
+    <div data-url="https://animista.net/">Animista</div>
+    <div data-url="https://www.vitsoe.com/rw/606">Layout #1</div>
+    <div data-url="https://www.ls.graphics/free-mockups">Free Mockup</div>
+    <div data-url="https://unblast.com/">Default Mockup</div>
+    <div data-url="https://www.sonduckfilm.com/tutorials/duck-pack/?campaign=FreeDuckPack&ref=1">
+      100 Free AE & PR Templates
+    </div>
+  </section>
+  <script>
+    function navigateToUrl(divElement) {
+      const url = divElement.getAttribute("data-url");
+      window.open(url, "_self");
+    }
+
+    const iconCache = {}; // 아이콘 캐싱을 위한 객체
+
+    async function fetchIcon(url) {
+      if (iconCache[url]) {
+        return iconCache[url]; // 캐시된 아이콘이 있으면 반환
       }
 
-      const iconCache = {}; // 아이콘 캐싱을 위한 객체
+      try {
+        // 아이콘 URL 가져오는 로직 (예: favicon URL을 가져오는 API 사용)
+        const response = await fetch(
+          `https://www.google.com/s2/favicons?domain=${new URL(url).hostname}`
+        );
 
-      async function fetchIcon(url) {
-        if (iconCache[url]) {
-          return iconCache[url]; // 캐시된 아이콘이 있으면 반환
+        if (response.ok) {
+          const iconUrl = response.url;
+          iconCache[url] = iconUrl; // 가져온 아이콘을 캐시에 저장
+          return iconUrl;
+        }
+      } catch (error) {
+        console.error("Icon fetch error:", error);
+        return null;
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", async function () {
+      const bookmarks = document.querySelectorAll(".bookmark[data-url]");
+
+      // for...of 루프를 사용하여 비동기 처리 보장
+      for (const bookmark of bookmarks) {
+        const imgElement = bookmark.querySelector("img");
+        const dataUrl = bookmark.getAttribute("data-url");
+
+        // 기본 이미지를 설정해 두고 fetchIcon 함수로 아이콘을 가져옴
+        imgElement.src = "/path/to/default_icon.png";
+
+        const iconUrl = await fetchIcon(dataUrl);
+        if (iconUrl) {
+          imgElement.src = iconUrl;
+        }
+      }
+    });
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // link 클래스를 가진 섹션을 모두 찾습니다
+      const linkSections = document.querySelectorAll("section.link");
+
+      linkSections.forEach((section) => {
+        // 각 섹션 내의 모든 div 요소를 찾습니다
+        const divs = section.querySelectorAll("div");
+
+        divs.forEach((div) => {
+          const url = div.getAttribute("data-url");
+          // URL이 있는지 확인합니다
+          if (url) {
+            // div를 클릭 가능하게 만듭니다
+            div.classList.add("clickable");
+            div.onclick = function () {
+              window.open(url, "_self");
+            };
+          }
+        });
+      });
+    });
+  </script>
+  <script>
+    // 페이지 로드 후 'name' 입력 필드에 커서 자동 이동
+    window.onload = function () {
+      document.getElementById("search").focus();
+    };
+  </script>
+  <script>
+    function updateCountdowns() {
+      const countdownElements = document.querySelectorAll(".countdown");
+
+      countdownElements.forEach((element) => {
+        const now = new Date();
+
+        // D-Day 계산
+        const dDay = element.dataset.dDay;
+        if (dDay) {
+          const targetDate = new Date(dDay);
+          const timeDiff = targetDate.getTime() - now.getTime();
+
+          if (timeDiff <= 0) {
+            element.textContent = "D-Day!";
+          } else {
+            const days = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+            element.textContent = `${days}일 남음`;
+          }
         }
 
-        try {
-          // 아이콘 URL 가져오는 로직 (예: favicon URL을 가져오는 API 사용)
-          const response = await fetch(
-            `https://www.google.com/s2/favicons?domain=${new URL(url).hostname}`
+        // 기준일부터 몇일 후까지 계산
+        const startDay = element.dataset.startDay;
+        const daysAfter = element.dataset.daysAfter;
+        if (startDay && daysAfter) {
+          const startDate = new Date(startDay);
+          const targetDate = new Date(
+            startDate.setDate(startDate.getDate() + parseInt(daysAfter))
           );
+          const timeDiff = targetDate.getTime() - now.getTime();
 
-          if (response.ok) {
-            const iconUrl = response.url;
-            iconCache[url] = iconUrl; // 가져온 아이콘을 캐시에 저장
-            return iconUrl;
-          }
-        } catch (error) {
-          console.error("Icon fetch error:", error);
-          return null;
-        }
-      }
-
-      document.addEventListener("DOMContentLoaded", async function () {
-        const bookmarks = document.querySelectorAll(".bookmark[data-url]");
-
-        // for...of 루프를 사용하여 비동기 처리 보장
-        for (const bookmark of bookmarks) {
-          const imgElement = bookmark.querySelector("img");
-          const dataUrl = bookmark.getAttribute("data-url");
-
-          // 기본 이미지를 설정해 두고 fetchIcon 함수로 아이콘을 가져옴
-          imgElement.src = "/path/to/default_icon.png";
-
-          const iconUrl = await fetchIcon(dataUrl);
-          if (iconUrl) {
-            imgElement.src = iconUrl;
+          if (timeDiff <= 0) {
+            element.textContent = `기준일로부터 ${daysAfter}일이 지났습니다.`;
+          } else {
+            const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24)); // 소수점을 내림 처리
+            element.textContent = `${days}일 남음`;
           }
         }
       });
-    </script>
+    }
 
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        // link 클래스를 가진 섹션을 모두 찾습니다
-        const linkSections = document.querySelectorAll("section.link");
+    // 1초마다 업데이트
+    setInterval(updateCountdowns, 1000);
 
-        linkSections.forEach((section) => {
-          // 각 섹션 내의 모든 div 요소를 찾습니다
-          const divs = section.querySelectorAll("div");
+    // 초기 호출
+    updateCountdowns();
+  </script>
+</body>
 
-          divs.forEach((div) => {
-            const url = div.getAttribute("data-url");
-            // URL이 있는지 확인합니다
-            if (url) {
-              // div를 클릭 가능하게 만듭니다
-              div.classList.add("clickable");
-              div.onclick = function () {
-                window.open(url, "_self");
-              };
-            }
-          });
-        });
-      });
-    </script>
-    <script>
-      // 페이지 로드 후 'name' 입력 필드에 커서 자동 이동
-      window.onload = function () {
-        document.getElementById("search").focus();
-      };
-    </script>
-    <script>
-      function updateCountdowns() {
-        const countdownElements = document.querySelectorAll(".countdown");
-
-        countdownElements.forEach((element) => {
-          const now = new Date();
-
-          // D-Day 계산
-          const dDay = element.dataset.dDay;
-          if (dDay) {
-            const targetDate = new Date(dDay);
-            const timeDiff = targetDate.getTime() - now.getTime();
-
-            if (timeDiff <= 0) {
-              element.textContent = "D-Day!";
-            } else {
-              const days = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
-              element.textContent = `${days}일 남음`;
-            }
-          }
-
-          // 기준일부터 몇일 후까지 계산
-          const startDay = element.dataset.startDay;
-          const daysAfter = element.dataset.daysAfter;
-          if (startDay && daysAfter) {
-            const startDate = new Date(startDay);
-            const targetDate = new Date(
-              startDate.setDate(startDate.getDate() + parseInt(daysAfter))
-            );
-            const timeDiff = targetDate.getTime() - now.getTime();
-
-            if (timeDiff <= 0) {
-              element.textContent = `기준일로부터 ${daysAfter}일이 지났습니다.`;
-            } else {
-              const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24)); // 소수점을 내림 처리
-              element.textContent = `${days}일 남음`;
-            }
-          }
-        });
-      }
-
-      // 1초마다 업데이트
-      setInterval(updateCountdowns, 1000);
-
-      // 초기 호출
-      updateCountdowns();
-    </script>
-  </body>
 </html>
