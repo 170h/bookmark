@@ -580,6 +580,39 @@
       100 Free AE & PR Templates
     </div>
   </section>
+
+  <!-- Firebase SDK -->
+  <script type="module">
+    // Import Firebase modules
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+    import { getDatabase, ref, set, get, onValue } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js';
+
+    // Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyCxus3q29dZf4cWvnCAdPJfTBqFf9zK76o",
+      authDomain: "bookmark-e3222.firebaseapp.com",
+      databaseURL: "https://bookmark-e3222-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "bookmark-e3222",
+      storageBucket: "bookmark-e3222.firebasestorage.app",
+      messagingSenderId: "562474777480",
+      appId: "1:562474777480:web:ee6b592db92b13ec8c983d",
+      measurementId: "G-44C8M7RB5T"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+
+    // Make Firebase available globally
+    window.firebaseDB = database;
+    window.firebaseRef = ref;
+    window.firebaseSet = set;
+    window.firebaseGet = get;
+    window.firebaseOnValue = onValue;
+
+    console.log('🔥 Firebase initialized successfully!');
+  </script>
+
   <script>
     function navigateToUrl(divElement) {
       const url = divElement.getAttribute("data-url");
@@ -652,12 +685,14 @@
       });
     });
   </script>
+
   <script>
     // 페이지 로드 후 'name' 입력 필드에 커서 자동 이동
     window.onload = function () {
       document.getElementById("search").focus();
     };
   </script>
+
   <script>
     function updateCountdowns() {
       const countdownElements = document.querySelectorAll(".countdown");
@@ -704,6 +739,173 @@
 
     // 초기 호출
     updateCountdowns();
+  </script>
+
+  <!-- Drag and Drop with Firebase Sync -->
+  <script>
+    // Wait for Firebase to be initialized
+    function waitForFirebase() {
+      return new Promise((resolve) => {
+        const checkFirebase = setInterval(() => {
+          if (window.firebaseDB) {
+            clearInterval(checkFirebase);
+            resolve();
+          }
+        }, 100);
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", async function () {
+      await waitForFirebase();
+
+      const sections = document.querySelectorAll("section.bookmark");
+      let draggedElement = null;
+      let sourceSection = null;
+
+      // Load saved order from Firebase
+      async function loadBookmarkOrder() {
+        try {
+          const orderRef = window.firebaseRef(window.firebaseDB, 'bookmarkOrder');
+          const snapshot = await window.firebaseGet(orderRef);
+
+          if (snapshot.exists()) {
+            const savedOrder = snapshot.val();
+            console.log('📥 Loaded bookmark order from Firebase:', savedOrder);
+            applyBookmarkOrder(savedOrder);
+          } else {
+            console.log('ℹ️ No saved order found, using default HTML order');
+          }
+        } catch (error) {
+          console.error('❌ Error loading bookmark order:', error);
+        }
+      }
+
+      // Apply bookmark order from saved data
+      function applyBookmarkOrder(orderData) {
+        sections.forEach((section) => {
+          const title = section.querySelector('.title');
+          if (!title) return;
+
+          const sectionName = title.textContent.trim();
+          const savedItems = orderData[sectionName];
+
+          if (!savedItems) return;
+
+          const items = Array.from(section.querySelectorAll('div:not(.title)'));
+
+          // Sort items based on saved order
+          items.sort((a, b) => {
+            const urlA = a.getAttribute('data-url');
+            const urlB = b.getAttribute('data-url');
+            const indexA = savedItems.indexOf(urlA);
+            const indexB = savedItems.indexOf(urlB);
+
+            if (indexA === -1) return 1;
+            if (indexB === -1) return -1;
+            return indexA - indexB;
+          });
+
+          // Re-append items in sorted order
+          items.forEach(item => section.appendChild(item));
+        });
+      }
+
+      // Save bookmark order to Firebase
+      async function saveBookmarkOrder() {
+        const orderData = {};
+
+        sections.forEach((section) => {
+          const title = section.querySelector('.title');
+          if (!title) return;
+
+          const sectionName = title.textContent.trim();
+          const items = section.querySelectorAll('div:not(.title)');
+
+          orderData[sectionName] = Array.from(items).map(item =>
+            item.getAttribute('data-url')
+          );
+        });
+
+        try {
+          const orderRef = window.firebaseRef(window.firebaseDB, 'bookmarkOrder');
+          await window.firebaseSet(orderRef, orderData);
+          console.log('💾 Saved bookmark order to Firebase:', orderData);
+        } catch (error) {
+          console.error('❌ Error saving bookmark order:', error);
+        }
+      }
+
+      // Initialize drag and drop for all bookmark items
+      sections.forEach((section) => {
+        const items = section.querySelectorAll("div:not(.title)");
+
+        items.forEach((item) => {
+          item.setAttribute("draggable", "true");
+
+          item.addEventListener("dragstart", (e) => {
+            draggedElement = item;
+            sourceSection = section;
+            item.classList.add("dragging");
+            e.dataTransfer.effectAllowed = "move";
+          });
+
+          item.addEventListener("dragend", (e) => {
+            item.classList.remove("dragging");
+
+            // Remove all drop indicators
+            document.querySelectorAll(".drag-over, .drop-target").forEach(el => {
+              el.classList.remove("drag-over", "drop-target");
+            });
+
+            // Save order after drag ends
+            saveBookmarkOrder();
+          });
+
+          item.addEventListener("dragover", (e) => {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = "move";
+
+            if (draggedElement !== item && !item.classList.contains("title")) {
+              item.classList.add("drag-over");
+            }
+          });
+
+          item.addEventListener("dragleave", (e) => {
+            item.classList.remove("drag-over");
+          });
+
+          item.addEventListener("drop", (e) => {
+            e.preventDefault();
+            item.classList.remove("drag-over");
+
+            if (draggedElement !== item && !item.classList.contains("title")) {
+              const allItems = Array.from(section.querySelectorAll("div:not(.title)"));
+              const draggedIndex = allItems.indexOf(draggedElement);
+              const targetIndex = allItems.indexOf(item);
+
+              if (draggedIndex < targetIndex) {
+                item.parentNode.insertBefore(draggedElement, item.nextSibling);
+              } else {
+                item.parentNode.insertBefore(draggedElement, item);
+              }
+            }
+          });
+        });
+      });
+
+      // Load saved order on page load
+      await loadBookmarkOrder();
+
+      // Listen for real-time updates from other devices
+      const orderRef = window.firebaseRef(window.firebaseDB, 'bookmarkOrder');
+      window.firebaseOnValue(orderRef, (snapshot) => {
+        if (snapshot.exists()) {
+          const savedOrder = snapshot.val();
+          console.log('🔄 Bookmark order updated from another device');
+          applyBookmarkOrder(savedOrder);
+        }
+      });
+    });
   </script>
 </body>
 

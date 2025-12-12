@@ -204,3 +204,39 @@ section {
   align-items: center;
   gap: 12px;
 }
+
+/* Drag and Drop Styles */
+.bookmark > div:not(.title) {
+  cursor: grab;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.bookmark > div:not(.title):active {
+  cursor: grabbing;
+}
+
+.bookmark > div.dragging {
+  opacity: 0.5;
+  transform: scale(0.95);
+}
+
+.bookmark > div.drag-over {
+  border: 2px dashed #2392ff;
+  border-radius: 8px;
+  background: rgba(35, 146, 255, 0.05);
+}
+
+.bookmark > div.drop-target::before {
+  content: '';
+  position: absolute;
+  left: -3px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: #2392ff;
+  border-radius: 2px;
+}
+
+.bookmark > div {
+  position: relative;
+}
