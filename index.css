@@ -277,3 +277,40 @@ section {
 .bookmark>div {
   position: relative;
 }
+
+/* Suggestions Dropdown */
+.suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 0 0 12px 12px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1000;
+  display: none;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.suggestions li {
+  padding: 10px 12px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.suggestions li:hover,
+.suggestions li.selected {
+  background-color: #f0f0f0;
+}
+
+/* Rounded corners for input when suggestions are open */
+.search-box:has(.suggestions[style*="block"]) input {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}

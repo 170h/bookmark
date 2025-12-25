@@ -13,14 +13,114 @@
 
 <body>
   <section class="search-container">
-    <form action="https://www.google.com/search" method="get" target="_blank">
+    <form action="https://www.google.com/search" method="get" target="_blank" id="search-form">
       <div class="search-box">
-        <input type="text" id="search" name="q" placeholder="Search Google" required autocomplete="on" />
+        <input type="text" id="search" name="q" placeholder="Search Google" required autocomplete="off" />
         <button type="submit">
           <img />
         </button>
+        <ul id="suggestions" class="suggestions"></ul>
       </div>
     </form>
+    <script>
+      const searchInput = document.getElementById('search');
+      const suggestionsList = document.getElementById('suggestions');
+      const searchForm = document.getElementById('search-form');
+      let debounceTimer;
+      let selectedIndex = -1;
+
+      // JSONP Callback function
+      window.googleAutocompleteCallback = function(data) {
+        const suggestions = data[1];
+        renderSuggestions(suggestions);
+      };
+
+      searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.trim();
+        clearTimeout(debounceTimer);
+
+        if (query.length === 0) {
+          suggestionsList.style.display = 'none';
+          return;
+        }
+
+        debounceTimer = setTimeout(() => {
+          fetchSuggestions(query);
+        }, 300);
+      });
+
+      searchInput.addEventListener('keydown', (e) => {
+        const items = suggestionsList.querySelectorAll('li');
+        if (items.length === 0) return;
+
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          selectedIndex = (selectedIndex + 1) % items.length;
+          updateSelection(items);
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          selectedIndex = (selectedIndex - 1 + items.length) % items.length;
+          updateSelection(items);
+        } else if (e.key === 'Enter') {
+            if(selectedIndex > -1) {
+                e.preventDefault(); // Prevent default form submission initially
+                searchInput.value = items[selectedIndex].textContent;
+                suggestionsList.style.display = 'none';
+                searchForm.submit();
+            }
+        } else if (e.key === 'Escape') {
+            suggestionsList.style.display = 'none';
+        }
+      });
+
+      // Close suggestions when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!searchForm.contains(e.target)) {
+          suggestionsList.style.display = 'none';
+        }
+      });
+
+      function fetchSuggestions(query) {
+        const script = document.createElement('script');
+        script.src = `https://suggestqueries.google.com/complete/search?client=chrome&q=${encodeURIComponent(query)}&callback=googleAutocompleteCallback`;
+        document.body.appendChild(script);
+        document.body.removeChild(script);
+      }
+
+      function renderSuggestions(suggestions) {
+        suggestionsList.innerHTML = '';
+        selectedIndex = -1;
+
+        if (suggestions.length === 0) {
+          suggestionsList.style.display = 'none';
+          return;
+        }
+
+        suggestions.forEach((item) => {
+          const li = document.createElement('li');
+          li.textContent = item;
+          li.addEventListener('click', () => {
+            searchInput.value = item;
+            suggestionsList.style.display = 'none';
+            searchForm.submit();
+          });
+          suggestionsList.appendChild(li);
+        });
+
+        suggestionsList.style.display = 'block';
+      }
+
+      function updateSelection(items) {
+        items.forEach((item, index) => {
+          if (index === selectedIndex) {
+            item.classList.add('selected');
+            searchInput.value = item.textContent; // Optional: Update input as you scroll
+          } else {
+            item.classList.remove('selected');
+          }
+        });
+      }
+    </script>
     <div class="count-container">
       <!-- <div>
           <div class="countdown" data-d-day="2025-2-28">Loading...</div>
@@ -59,19 +159,19 @@
       <p>GitHub</p>
       <small>Developer</small>
     </div>
-    <div data-url="https://notebooklm.google.com/" onclick="navigateToUrl(this)">
+    <div data-url="https://notebooklm.google.com/?authuser=noh@oullin.com" onclick="navigateToUrl(this)">
       <p>Notebook LM</p>
       <small>Analytics</small>
     </div>
-    <div data-url="https://mixboard.google.com/u/5/projects?pageId=none" onclick="navigateToUrl(this)">
+    <div data-url="https://mixboard.google.com/u/5/projects?pageId=none&authuser=noh@oullin.com" onclick="navigateToUrl(this)">
       <p>Mixboard</p>
       <small>Image Generation</small>
     </div>
-    <div data-url="https://opal.withgoogle.com/?mode=canvas" onclick="navigateToUrl(this)">
+    <div data-url="https://opal.withgoogle.com/?mode=canvas&authuser=noh@oullin.com" onclick="navigateToUrl(this)">
       <p>Opal</p>
       <small>Research</small>
     </div>
-    <div data-url="https://gemini.google.com/app?hl=ko" onclick="navigateToUrl(this)">
+    <div data-url="https://gemini.google.com/app?hl=ko&authuser=noh@oullin.com" onclick="navigateToUrl(this)">
       <p>Gemini</p>
       <small>LLM</small>
     </div>
@@ -88,13 +188,13 @@
     <div data-url="https://www.youtube.com/" onclick="navigateToUrl(this)">
       <p>Youtube</p>
     </div>
-    <div data-url="https://mail.google.com/" onclick="navigateToUrl(this)">
+    <div data-url="https://mail.google.com/?authuser=noh@oullin.com" onclick="navigateToUrl(this)">
       <p>Gmail</p>
     </div>
-    <div data-url="https://docs.google.com/spreadsheets/u/0/" onclick="navigateToUrl(this)">
+    <div data-url="https://docs.google.com/spreadsheets/u/0/&authuser=noh@oullin.com" onclick="navigateToUrl(this)">
       <p>Google Sheets</p>
     </div>
-    <div data-url="https://admin.google.com/u/5/ac/home?hl=ko" onclick="navigateToUrl(this)">
+    <div data-url="https://admin.google.com/u/5/ac/home?hl=ko&authuser=noh@oullin.com" onclick="navigateToUrl(this)">
       <p>Google Admin</p>
     </div>
     <div
