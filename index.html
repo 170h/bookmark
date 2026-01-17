@@ -222,31 +222,31 @@
         <p>Youtube</p>
       </div>
       <div
-        data-url="https://mail.google.com/mail/u/noh@oullin.com/"
+        data-url="https://accounts.google.com/AccountChooser?Email=noh@oullin.com&continue=https://mail.google.com/mail/"
         onclick="navigateToUrl(this)"
       >
         <p>Gmail</p>
       </div>
       <div
-        data-url="https://docs.google.com/spreadsheets/u/noh@oullin.com/"
+        data-url="https://accounts.google.com/AccountChooser?Email=noh@oullin.com&continue=https://docs.google.com/spreadsheets/"
         onclick="navigateToUrl(this)"
       >
         <p>Google Sheets</p>
       </div>
       <div
-        data-url="https://admin.google.com/u/noh@oullin.com/"
+        data-url="https://accounts.google.com/AccountChooser?Email=noh@oullin.com&continue=https://admin.google.com/"
         onclick="navigateToUrl(this)"
       >
         <p>Google Admin</p>
       </div>
       <div
-        data-url="https://analytics.google.com/analytics/web/?authuser=noh@oullin.com"
+        data-url="https://accounts.google.com/AccountChooser?Email=noh@oullin.com&continue=https://analytics.google.com/analytics/web/"
         onclick="navigateToUrl(this)"
       >
         <p>Google Analytics</p>
       </div>
       <div
-        data-url="https://drive.google.com/drive/u/noh@oullin.com/home"
+        data-url="https://accounts.google.com/AccountChooser?Email=noh@oullin.com&continue=https://drive.google.com/drive/home"
         onclick="navigateToUrl(this)"
       >
         <p>Google Drive</p>
@@ -1046,6 +1046,45 @@
         }
         // Initialize drag and drop for all bookmark items
         sections.forEach((section) => {
+          // Section-level drag and drop listeners
+          section.addEventListener("dragover", (e) => {
+            e.preventDefault();
+            e.dataTransfer.dropEffect = "move";
+            if (draggedElement && !section.contains(draggedElement)) {
+              section.classList.add("drag-over");
+            }
+          });
+
+          section.addEventListener("dragleave", (e) => {
+            // Only remove if we're actually leaving the section (not moving to a child)
+            if (!section.contains(e.relatedTarget)) {
+              section.classList.remove("drag-over");
+            }
+          });
+
+          section.addEventListener("drop", (e) => {
+            e.preventDefault();
+            section.classList.remove("drag-over");
+
+            // If dropped on an item, the item's drop handler will take care of it.
+            // If dropped on the section directly (empty space), append to the end.
+            if (
+              e.target.tagName === "SECTION" ||
+              e.target.classList.contains("title")
+            ) {
+              if (draggedElement && !section.contains(draggedElement)) {
+                section.appendChild(draggedElement);
+                saveBookmarkOrder();
+              } else if (draggedElement && section.contains(draggedElement)) {
+                // Already in this section, move to the end if not already there
+                if (draggedElement !== section.lastElementChild) {
+                  section.appendChild(draggedElement);
+                  saveBookmarkOrder();
+                }
+              }
+            }
+          });
+
           const items = section.querySelectorAll("div:not(.title)");
           items.forEach((item) => {
             item.setAttribute("draggable", "true");
@@ -1055,45 +1094,49 @@
               item.classList.add("dragging");
               e.dataTransfer.effectAllowed = "move";
             });
+
             item.addEventListener("dragend", (e) => {
               item.classList.remove("dragging");
               // Remove all drop indicators
               document
-                .querySelectorAll(".drag-over, .drop-target")
+                .querySelectorAll(".drag-over, .drop-target, section.drag-over")
                 .forEach((el) => {
                   el.classList.remove("drag-over", "drop-target");
                 });
+              draggedElement = null;
+              sourceSection = null;
               // Save order after drag ends
               saveBookmarkOrder();
             });
+
             item.addEventListener("dragover", (e) => {
               e.preventDefault();
+              e.stopPropagation(); // Prevent section's dragover from firing
               e.dataTransfer.dropEffect = "move";
               if (
+                draggedElement &&
                 draggedElement !== item &&
                 !item.classList.contains("title")
               ) {
                 item.classList.add("drag-over");
               }
             });
+
             item.addEventListener("dragleave", (e) => {
               item.classList.remove("drag-over");
             });
+
             item.addEventListener("drop", (e) => {
               e.preventDefault();
+              e.stopPropagation(); // Prevent section's drop from firing
               item.classList.remove("drag-over");
+
               if (
+                draggedElement &&
                 draggedElement !== item &&
                 !item.classList.contains("title")
               ) {
                 const targetSection = section;
-                const allItems = Array.from(
-                  targetSection.querySelectorAll("div:not(.title)"),
-                );
-                const targetIndex = allItems.indexOf(item);
-
-                // Insert before or after the target item within the (possibly new) section
-                // Note: draggedElement will be automatically removed from its old section by insertBefore
                 const rect = item.getBoundingClientRect();
                 const next =
                   (e.clientY - rect.top) / (rect.bottom - rect.top) > 0.5;
@@ -1116,8 +1159,21 @@
         window.firebaseOnValue(orderRef, (snapshot) => {
           if (snapshot.exists()) {
             const savedOrder = snapshot.val();
-            console.log("🔄 Bookmark order updated from another device");
-            applyBookmarkOrder(savedOrder);
+            // Prevent applying if it's the same as current to avoid flickering during local drag
+            const currentOrder = {};
+            sections.forEach((s) => {
+              const title = s.querySelector(".title")?.textContent.trim();
+              if (title) {
+                currentOrder[title] = Array.from(
+                  s.querySelectorAll("div[data-url]"),
+                ).map((i) => i.getAttribute("data-url"));
+              }
+            });
+
+            if (JSON.stringify(savedOrder) !== JSON.stringify(currentOrder)) {
+              console.log("🔄 Bookmark order updated from another device");
+              applyBookmarkOrder(savedOrder);
+            }
           }
         });
       });
