@@ -989,28 +989,37 @@
         }
         // Apply bookmark order from saved data
         function applyBookmarkOrder(orderData) {
+          // 1. Map all existing bookmark items by their URL
+          const allItemsMap = {};
           sections.forEach((section) => {
-            const title = section.querySelector(".title");
-            if (!title) return;
-            const sectionName = title.textContent.trim();
-            const savedItems = orderData[sectionName];
-            if (!savedItems) return;
-            const items = Array.from(
-              section.querySelectorAll("div:not(.title)"),
-            );
-            // Sort items based on saved order
-            items.sort((a, b) => {
-              const urlA = a.getAttribute("data-url");
-              const urlB = b.getAttribute("data-url");
-              const indexA = savedItems.indexOf(urlA);
-              const indexB = savedItems.indexOf(urlB);
-              if (indexA === -1) return 1;
-              if (indexB === -1) return -1;
-              return indexA - indexB;
+            section.querySelectorAll("div[data-url]").forEach((item) => {
+              const url = item.getAttribute("data-url");
+              if (url) allItemsMap[url] = item;
             });
-            // Re-append items in sorted order
-            items.forEach((item) => section.appendChild(item));
           });
+
+          // 2. Clear current items from sections and re-append in order from Firebase
+          Object.keys(orderData).forEach((sectionName) => {
+            const section = Array.from(sections).find(
+              (s) =>
+                s.querySelector(".title")?.textContent.trim() === sectionName,
+            );
+            if (!section) return;
+
+            const savedUrls = orderData[sectionName];
+            savedUrls.forEach((url) => {
+              const item = allItemsMap[url];
+              if (item) {
+                section.appendChild(item);
+                delete allItemsMap[url]; // Mark as placed
+              }
+            });
+          });
+
+          // 3. Any remaining items in allItemsMap were not in saved order (e.g. new bookmarks added to HTML)
+          // We leave them in their original positions in the DOM if they weren't moved.
+          // Since we used appendChild to move items, the ones not in orderData should still be in their original parents
+          // unless their entire parent was moved, but sections themselves don't move here.
         }
         // Save bookmark order to Firebase
         async function saveBookmarkOrder() {
@@ -1077,19 +1086,25 @@
                 draggedElement !== item &&
                 !item.classList.contains("title")
               ) {
+                const targetSection = section;
                 const allItems = Array.from(
-                  section.querySelectorAll("div:not(.title)"),
+                  targetSection.querySelectorAll("div:not(.title)"),
                 );
-                const draggedIndex = allItems.indexOf(draggedElement);
                 const targetIndex = allItems.indexOf(item);
-                if (draggedIndex < targetIndex) {
-                  item.parentNode.insertBefore(
-                    draggedElement,
-                    item.nextSibling,
-                  );
-                } else {
-                  item.parentNode.insertBefore(draggedElement, item);
-                }
+
+                // Insert before or after the target item within the (possibly new) section
+                // Note: draggedElement will be automatically removed from its old section by insertBefore
+                const rect = item.getBoundingClientRect();
+                const next =
+                  (e.clientY - rect.top) / (rect.bottom - rect.top) > 0.5;
+
+                targetSection.insertBefore(
+                  draggedElement,
+                  next ? item.nextSibling : item,
+                );
+
+                // Save order after drop
+                saveBookmarkOrder();
               }
             });
           });
