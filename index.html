@@ -192,13 +192,6 @@
         <small>CDN</small>
       </div>
       <div
-        data-url="https://tailwindcss.com/docs/installation/using-vite"
-        onclick="navigateToUrl(this)"
-      >
-        <p>Tailwind CSS</p>
-        <small>UI</small>
-      </div>
-      <div
         data-url="https://ui.shadcn.com/docs/components"
         onclick="navigateToUrl(this)"
       >
@@ -541,6 +534,9 @@
       <div data-url="https://tools.rotato.app" onclick="navigateToUrl(this)">
         <p>Rotato Tools</p>
       </div>
+      <div data-url="https://gltf.pmnd.rs/" onclick="navigateToUrl(this)">
+        <p>GLTF</p>
+      </div>
     </section>
     <!-- Design References -->
     <section class="bookmark">
@@ -565,9 +561,6 @@
       </div>
       <div data-url="https://www.khroma.co/" onclick="navigateToUrl(this)">
         <p>Khroma</p>
-      </div>
-      <div data-url="https://coolors.co/" onclick="navigateToUrl(this)">
-        <p>Coolors</p>
       </div>
       <div data-url="https://colorhunt.co/" onclick="navigateToUrl(this)">
         <p>Color Hunt</p>
@@ -1067,21 +1060,24 @@
             section.classList.remove("drag-over");
 
             // If dropped on an item, the item's drop handler will take care of it.
-            // If dropped on the section directly (empty space), append to the end.
+            // If dropped on the section directly (empty space) or the title:
             if (
               e.target.tagName === "SECTION" ||
               e.target.classList.contains("title")
             ) {
-              if (draggedElement && !section.contains(draggedElement)) {
-                section.appendChild(draggedElement);
-                saveBookmarkOrder();
-              } else if (draggedElement && section.contains(draggedElement)) {
-                // Already in this section, move to the end if not already there
-                if (draggedElement !== section.lastElementChild) {
+              const title = section.querySelector(".title");
+              if (e.target.classList.contains("title")) {
+                // dropped on title -> insert at the beginning (after title)
+                if (title && title.nextSibling) {
+                  section.insertBefore(draggedElement, title.nextSibling);
+                } else {
                   section.appendChild(draggedElement);
-                  saveBookmarkOrder();
                 }
+              } else {
+                // dropped on section empty space -> append to end
+                section.appendChild(draggedElement);
               }
+              saveBookmarkOrder();
             }
           });
 
