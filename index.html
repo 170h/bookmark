@@ -145,10 +145,6 @@
           <small>Amazon Prime</small>
         </div> -->
         <div>
-          <div class="countdown" data-d-day="2026-01-13">Loading...</div>
-          <small>emagine.kr SSL</small>
-        </div>
-        <div>
           <div
             class="countdown"
             data-start-day="2025-11-26"
@@ -157,6 +153,10 @@
             Loading...
           </div>
           <small>Adobe Cloud</small>
+        </div>
+        <div>
+          <div class="countdown" data-elapsed-from="2025-01-15">Loading...</div>
+          <small>emagine.kr</small>
         </div>
       </div>
     </section>
@@ -930,21 +930,17 @@
               element.textContent = `${days}일 남음`;
             }
           }
-          // 기준일부터 몇일 후까지 계산
-          const startDay = element.dataset.startDay;
-          const daysAfter = element.dataset.daysAfter;
-          if (startDay && daysAfter) {
-            const startDate = new Date(startDay);
-            const targetDate = new Date(
-              startDate.setDate(startDate.getDate() + parseInt(daysAfter)),
-            );
-            const timeDiff = targetDate.getTime() - now.getTime();
-            if (timeDiff <= 0) {
-              element.textContent = `기준일로부터 ${daysAfter}일이 지났습니다.`;
-            } else {
-              const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24)); // 소수점을 내림 처리
-              element.textContent = `${days}일 남음`;
-            }
+          // 기준일부터 오늘까지 경과된 날짜 계산 (D+X)
+          const elapsedFrom = element.dataset.elapsedFrom;
+          if (elapsedFrom) {
+            const startDate = new Date(elapsedFrom);
+            startDate.setHours(0, 0, 0, 0);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            const timeDiff = today.getTime() - startDate.getTime();
+            const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+            element.textContent = `D+${days}`;
           }
         });
       }
